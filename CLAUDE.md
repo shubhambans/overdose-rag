@@ -51,7 +51,17 @@ GEMINI_API_KEY=...      # free tier, only ~20 requests/day per model
   - Lesson: answer keys must only expect what the corpus contains, or the eval measures corpus coverage instead of RAG.
 - Gemini free tier: newest Flash models (3.6–3.8) often return 503 "high demand"; 3.5 Flash works but allows only 20 requests/day.
 
-## Next: tone study (agreed design)
+## ▶ CURRENT TASK: execute `PLAN.md`
+Shubham's latest decisions:
+- Claude API only (budget **$20, hard stop $18**).
+- Focus on **RAG grounding vs. default vs. MI-prompt**.
+- Add **Study 2**: can message wording reveal the substance?
+- Figures go in `figures/`.
+- Run autonomously; don't stop to ask unless the action is over budget or destructive.
+
+`PLAN.md` supersedes the older design notes below where they conflict (e.g. no Gemini comparison).
+
+## Earlier design notes: tone study
 **Question:** How do AI models respond to people who use drugs and their families: empathy, autonomy vs. pushiness, moralizing, stigma?
 
 **Compare three conditions:**

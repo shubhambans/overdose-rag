@@ -6,3 +6,6 @@ docs/papers/
 eval/_gemini_run/
 eval/cache/
 .gemini_models.json
+rubric_sources/*
+!rubric_sources/README.md
+results/api_usage.csv
