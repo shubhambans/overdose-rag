@@ -14,12 +14,20 @@ if not (ROOT / "index" / "chunks.json").exists():
             fetch_papers.main()
         ingest.main()
 
+from src.llm import default_model  # noqa: E402
 from src.rag import answer, answer_no_rag, cite  # noqa: E402
+
+try:
+    MODEL = default_model()
+except SystemExit as e:
+    st.error(str(e))
+    st.stop()
 
 st.title("Overdose Response Guidance Assistant")
 st.caption(
     "Answers grounded in SAMHSA / CDC / ASAM guidance and peer-reviewed research on addiction care, "
-    "with citations. Educational only — not medical advice. **In an emergency, call 911.**"
+    f"with citations. Model: `{MODEL}`. Educational only — not medical advice. "
+    "**In an emergency, call 911.**"
 )
 
 examples = [

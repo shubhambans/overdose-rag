@@ -70,6 +70,17 @@ A separate judge model (Claude Opus) grades every answer against a written **ans
 - **Caching:** every answer and grade is saved, so re-runs only pay for new work.
 - **Multiple models:** `--models claude-sonnet-5-5,claude-haiku-5-5` tests the hypothesis that RAG helps smaller models more.
 
+### 9. Which AI model (`src/llm.py`)
+One function, `ask()`, sends a prompt to either Claude (paid API) or Gemini (free tier), based on which key is in `.env`. For Gemini it asks Google which models the key can use, test-pings them newest-first, and uses the first that responds (new models are often "overloaded" on the free tier). It spaces out requests to stay under the per-minute limit, waits and retries when Google says "busy" or "slow down," and stops cleanly when the daily limit (about 20 requests per model) runs out. Answers come from Gemini Flash; grading uses a Flash-Lite model, so the judge is a different model and the two use separate daily limits.
+
+### Pilot result (Gemini 3.5 Flash, judged by Gemini 3.1 Flash-Lite, first 6 questions)
+| | Coverage of answer key | Errors | Faithful to sources |
+|---|---|---|---|
+| Without sources | 94% | 0/6 | – |
+| With sources (RAG) | 82% | 0/6 | 6/6 |
+
+*What happened:* on basic overdose questions, a strong model already knows the answers. RAG lost points mainly on "How do you give nasal naloxone?": the documents don't contain step-by-step nozzle instructions (the SAMHSA toolkit points to the product label), so RAG correctly said so and stopped, while the model answered fully from memory. This shows RAG is only as good as its library, and that the answer key should be checked against what the sources actually contain. Six questions is a pilot, not a result; the full 31-question run is the real test, and the communication/research questions are where RAG should matter most.
+
 ## Limitations to be upfront about
 - 31 questions is small; the answer key was written by one person; an LLM judge is not a clinician. Next step: have a clinician grade a sample to check the judge agrees.
 - Only CC-licensed or PMC-available papers are included, which skews toward open-access journals.
@@ -83,4 +94,4 @@ A separate judge model (Claude Opus) grades every answer against a written **ans
 - **"How would you scale the data?"** Add rows to `papers.csv` (or generate them from a PubMed search); the fetcher and indexer handle the rest. Past ~10k chunks, move to a vector database.
 
 ## Stack
-Python · sentence-transformers (embeddings + cross-encoder reranker) · rank-bm25 (keyword search) · NumPy · NCBI E-utilities (PubMed Central) · Anthropic API (Claude) · Streamlit · Hugging Face Spaces
+Python · sentence-transformers (embeddings + cross-encoder reranker) · rank-bm25 (keyword search) · NumPy · NCBI E-utilities (PubMed Central) · Anthropic API (Claude) / Google Gemini API · Streamlit · Hugging Face Spaces

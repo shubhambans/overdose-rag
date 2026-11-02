@@ -16,13 +16,22 @@ pip install -r requirements.txt
 python src/fetch_papers.py           # download research papers from PubMed Central -> docs/papers/
 python src/ingest.py                 # chunk + embed everything in docs/ -> index/
 python eval/run_eval.py              # retrieval eval (no API key needed)
+```
 
-# needs an Anthropic API key:
-export ANTHROPIC_API_KEY=sk-ant-...  # Windows PowerShell: $env:ANTHROPIC_API_KEY="sk-ant-..."
+**Add an API key** in a file named `.env` in this folder (git-ignored). Either works:
+```
+GEMINI_API_KEY=...        # free, from aistudio.google.com (about 20 requests/day per model)
+ANTHROPIC_API_KEY=...     # paid, from platform.claude.com
+```
+Then:
+```bash
+python src/llm.py                    # shows which model will be used and makes a test call
 streamlit run app.py                 # web app
 python eval/compare.py               # RAG vs no-RAG experiment -> eval/results_compare.csv
-python eval/compare.py --models claude-sonnet-5-5,claude-haiku-5-5
+python eval/compare.py --limit 5     # quick version
 ```
+With Gemini's free tier the full experiment (~155 requests) won't fit in one day. The script stops
+when the daily limit hits and continues where it left off the next time you run it.
 
 ## Sources
 **Guidance (`docs/`):** SAMHSA Overdose Prevention and Response Toolkit (2023) · ASAM National Practice Guideline for OUD, 2020 Focused Update · CDC Stop Overdose (Fentanyl Facts, Lifesaving Naloxone, Naloxone FAQ, Test for Fentanyl) · WA DOH Overdose Education and Naloxone Distribution

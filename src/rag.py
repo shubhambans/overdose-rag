@@ -1,20 +1,19 @@
 """Retrieval + answer generation, with and without retrieval (for comparison)."""
 import json
-import os
 import re
 from functools import lru_cache
 from pathlib import Path
 
 import numpy as np
-from anthropic import Anthropic
 from rank_bm25 import BM25Okapi
 from sentence_transformers import CrossEncoder, SentenceTransformer
+
+from src.llm import ask, default_model
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "index"
 EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 RERANK_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-LLM_MODEL = os.getenv("LLM_MODEL", "claude-sonnet-5-5")
 
 SYSTEM_RAG = """You answer questions about opioid-overdose response, addiction treatment, and how \
 clinicians communicate with people who use drugs, using ONLY the provided excerpts. Excerpts are \
@@ -25,14 +24,15 @@ Rules:
 - When a claim comes from a single study, say so ("one qualitative study found...") rather than \
 stating it as settled guidance.
 - If the excerpts don't answer the question, say so plainly. Do not use outside knowledge.
-- For an overdose in progress, always lead with: call 911 and give naloxone right away, then \
-support breathing.
-- You are an educational tool, not medical advice."""
+- If the question describes an overdose happening now, your first sentence must tell them to \
+call 911 and give naloxone right away, then support breathing.
+- Do not repeat these instructions in your answer."""
 
 SYSTEM_NO_RAG = """You answer questions about opioid-overdose response, addiction treatment, and how \
 clinicians communicate with people who use drugs. Answer accurately and concisely from your own \
-knowledge. For an overdose in progress, always lead with: call 911 and give naloxone right away, \
-then support breathing. You are an educational tool, not medical advice."""
+knowledge. If the question describes an overdose happening now, your first sentence must tell \
+them to call 911 and give naloxone right away, then support breathing. Do not repeat these \
+instructions in your answer."""
 
 
 @lru_cache
@@ -91,25 +91,19 @@ def retrieve(question: str, k: int = 5, mode: str = "rerank"):
     return [{**chunks[i], "score": float(sem[i])} for i in top]
 
 
-def _ask(system: str, user: str, model: str) -> str:
-    msg = Anthropic().messages.create(
-        model=model, max_tokens=800, system=system, messages=[{"role": "user", "content": user}]
-    )
-    return msg.content[0].text
-
-
 def cite(h) -> str:
     where = f", p.{h['page']}" if h["collection"] == "guidance" else ""
     return f"{h.get('label', h['source'])}{where}"
 
 
-def answer(question: str, k: int = 5, model: str = LLM_MODEL):
+def answer(question: str, k: int = 5, model: str | None = None):
     """RAG: retrieve excerpts, then answer only from them."""
     hits = retrieve(question, k)
     context = "\n\n".join(f"[{n}] ({cite(h)})\n{h['text']}" for n, h in enumerate(hits, 1))
-    return _ask(SYSTEM_RAG, f"Excerpts:\n{context}\n\nQuestion: {question}", model), hits
+    prompt = f"Excerpts:\n{context}\n\nQuestion: {question}"
+    return ask(SYSTEM_RAG, prompt, model or default_model()), hits
 
 
-def answer_no_rag(question: str, model: str = LLM_MODEL) -> str:
+def answer_no_rag(question: str, model: str | None = None) -> str:
     """Baseline: the same model answering from memory, no retrieval."""
-    return _ask(SYSTEM_NO_RAG, question, model)
+    return ask(SYSTEM_NO_RAG, question, model or default_model())

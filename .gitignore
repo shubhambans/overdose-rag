@@ -3,3 +3,6 @@ __pycache__/
 .env
 eval/results*.csv
 docs/papers/
+eval/_gemini_run/
+eval/cache/
+.gemini_models.json

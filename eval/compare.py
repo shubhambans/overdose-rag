@@ -1,15 +1,19 @@
 """Compare RAG vs no-RAG answers, graded by an LLM judge against the answer key.
 
 Usage:
-  python eval/compare.py                                   # default model, all questions
+  python eval/compare.py                  # uses whichever API key you set (Gemini = free)
+  python eval/compare.py --limit 5        # quick test on 5 questions
   python eval/compare.py --models claude-sonnet-5-5,claude-haiku-5-5
-  python eval/compare.py --limit 5                         # quick test
+  python eval/compare.py --models gemini-X-flash --judge gemini-Y-flash-lite
+
+Gemini's free tier has a daily request limit. If you hit it, the script stops,
+prints results for what's done, and picks up where it left off when re-run.
 
 For every question and model it produces two answers:
   rag     - retrieve excerpts, answer only from them (src/rag.py: answer)
   no_rag  - same model, same question, answering from memory (answer_no_rag)
 
-A judge model grades each answer:
+A judge model (a different model from the answerer) grades each answer:
   coverage     - share of the answer key's points the answer gets right (0-1)
   error        - does the answer state anything incorrect or unsafe? (yes/no)
   faithful     - RAG only: is every claim supported by the retrieved excerpts? (yes/no)
@@ -27,7 +31,8 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from src.rag import _ask, answer, answer_no_rag, cite  # noqa: E402
+from src.llm import QuotaExhausted, ask as _ask, default_judge, default_model  # noqa: E402
+from src.rag import answer, answer_no_rag, cite  # noqa: E402
 
 HERE = Path(__file__).parent
 CACHE = HERE / "cache"
@@ -109,13 +114,34 @@ def safety_pass(ans: str) -> bool:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--models", default="claude-sonnet-5-5")
-    ap.add_argument("--judge", default="claude-opus-5-5")
+    ap.add_argument("--models", default=None, help="comma-separated; default: auto from your API key")
+    ap.add_argument("--judge", default=None, help="default: auto from your API key")
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
+    args.models = args.models or default_model()
+    args.judge = args.judge or default_judge()
     questions = QS[: args.limit] if args.limit else QS
+    print(f"Answering with: {args.models}   Judging with: {args.judge}\n")
 
     rows = []
+    try:
+        run(args, questions, rows)
+    except QuotaExhausted as e:
+        print(f"\nStopped early: {e}\nEverything finished so far is saved; re-run this command "
+              "tomorrow (quota resets at midnight US Pacific) and it will continue.")
+    if not rows:
+        return
+
+    out = HERE / "results_compare.csv"
+    with out.open("w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=rows[0].keys())
+        w.writeheader()
+        w.writerows(rows)
+    summarize(rows)
+    print(f"\nFull results: {out}")
+
+
+def run(args, questions, rows):
     for model in args.models.split(","):
         for q in questions:
             rag = cached("rag", model + q["question"], lambda: _rag_payload(q["question"], model))
@@ -131,14 +157,6 @@ def main():
                     row["faithful"], row["unsupported"] = faithfulness(ans, rag["hits"], args.judge)
                 rows.append(row)
             print(f"{model} {q['id']}: rag {rows[-2]['coverage']:.2f} | no_rag {rows[-1]['coverage']:.2f}")
-
-    out = HERE / "results_compare.csv"
-    with out.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=rows[0].keys())
-        w.writeheader()
-        w.writerows(rows)
-    summarize(rows)
-    print(f"\nFull results: {out}")
 
 
 def _rag_payload(question, model):
