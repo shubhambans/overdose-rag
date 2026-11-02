@@ -1,0 +1,6 @@
+anthropic
+sentence-transformers
+pypdf
+streamlit
+numpy
+rank_bm25

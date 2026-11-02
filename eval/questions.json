@@ -1,0 +1,91 @@
+[
+  {
+    "question": "What are the signs of an opioid overdose?",
+    "expected_source": "samhsa"
+  },
+  {
+    "question": "What are the five steps for responding to an overdose?",
+    "expected_source": "samhsa"
+  },
+  {
+    "question": "How do you administer nasal naloxone?",
+    "expected_source": "samhsa"
+  },
+  {
+    "question": "What should you do if the person doesn't respond after the first naloxone dose?",
+    "expected_source": "samhsa"
+  },
+  {
+    "question": "How long does naloxone last compared to opioids?",
+    "expected_source": "samhsa"
+  },
+  {
+    "question": "Should you stay with someone after giving naloxone?",
+    "expected_source": [
+      "samhsa",
+      "cdc"
+    ]
+  },
+  {
+    "question": "Is naloxone available without a prescription?",
+    "expected_source": "cdc"
+  },
+  {
+    "question": "Who should carry naloxone?",
+    "expected_source": "cdc"
+  },
+  {
+    "question": "Why is fentanyl driving overdose deaths?",
+    "expected_source": "cdc"
+  },
+  {
+    "question": "What are fentanyl test strips?",
+    "expected_source": "cdc"
+  },
+  {
+    "question": "What is the recovery position?",
+    "expected_source": "samhsa"
+  },
+  {
+    "question": "Can naloxone harm someone who is not on opioids?",
+    "expected_source": "samhsa"
+  },
+  {
+    "question": "What medications are used to treat opioid use disorder?",
+    "expected_source": "asam"
+  },
+  {
+    "question": "When should buprenorphine be started?",
+    "expected_source": "asam"
+  },
+  {
+    "question": "What is precipitated withdrawal?",
+    "expected_source": "asam"
+  },
+  {
+    "question": "Should patients be discharged from treatment for continued use?",
+    "expected_source": "asam"
+  },
+  {
+    "question": "How long should medication for OUD be continued?",
+    "expected_source": "asam"
+  },
+  {
+    "question": "Does Washington have a Good Samaritan overdose law?",
+    "expected_source": [
+      "samhsa",
+      "cdc"
+    ]
+  },
+  {
+    "question": "Where can I get free naloxone in Washington?",
+    "expected_source": "wa"
+  },
+  {
+    "question": "What is xylazine and does naloxone reverse it?",
+    "expected_source": [
+      "cdc",
+      "samhsa"
+    ]
+  }
+]
