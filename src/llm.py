@@ -29,7 +29,13 @@ def _load_dotenv():
         for line in env.read_text().splitlines():
             if "=" in line and not line.strip().startswith("#"):
                 key, value = line.split("=", 1)
-                os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+                key, value = key.strip(), value.strip().strip('"').strip("'")
+                # .env wins over the system environment for API keys: CLAUDE.md says keys live in
+                # .env only, and a stale Windows-level ANTHROPIC_API_KEY once shadowed the real one.
+                if key.endswith("_API_KEY"):
+                    os.environ[key] = value
+                else:
+                    os.environ.setdefault(key, value)
 
 
 _load_dotenv()
@@ -129,19 +135,52 @@ def default_judge() -> str:
 
 # ---------- calling models ----------
 
-def ask(system: str, user: str, model: str) -> str:
+def ask(system: str, user: str, model: str, **kw) -> str:
+    """kw (Claude only): phase= label for the cost log; cache_system=True to prompt-cache the
+    system prompt; effort= "low"|"medium"|"high"; max_tokens=."""
     if model.startswith("gemini"):
         return _ask_gemini(system, user, model)
-    return _ask_claude(system, user, model)
+    return _ask_claude(system, user, model, **kw)
 
 
-def _ask_claude(system, user, model):
+@lru_cache
+def _anthropic():
     from anthropic import Anthropic
 
-    msg = Anthropic().messages.create(
-        model=model, max_tokens=1000, system=system, messages=[{"role": "user", "content": user}]
-    )
-    return msg.content[0].text
+    return Anthropic(max_retries=4)
+
+
+def claude_create(phase="", **params):
+    """messages.create with the budget guard: refuses past the hard stop, logs every call's cost."""
+    import sys
+
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    from src import costs
+
+    costs.check()
+    msg = _anthropic().messages.create(**params)
+    costs.log(params["model"], msg.usage, phase)
+    return msg
+
+
+def text_of(msg) -> str:
+    # With thinking on (default on current models), content can start with a thinking block,
+    # so join the text blocks instead of reading content[0].
+    return "".join(b.text for b in msg.content if b.type == "text").strip()
+
+
+def _ask_claude(system, user, model, phase="", cache_system=False, effort=None, max_tokens=4000):
+    sys_param = ([{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
+                 if cache_system else system)
+    params = dict(model=model, max_tokens=max_tokens, system=sys_param,
+                  messages=[{"role": "user", "content": user}])
+    if effort:
+        params["output_config"] = {"effort": effort}
+    msg = claude_create(phase=phase, **params)
+    if msg.stop_reason == "refusal":
+        return "[REFUSED BY MODEL]"
+    return text_of(msg)
 
 
 @lru_cache

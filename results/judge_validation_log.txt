@@ -1,0 +1,51 @@
+43 transcripts (20 high, 23 low); 43 to judge, projected $1.75. Spent so far $0.63
+  transcript 17 (low) judged
+  transcript 15 (low) judged
+  transcript 7 (high) judged
+  transcript 45 (high) judged
+  transcript 115 (low) judged
+  transcript 20 (high) judged
+  transcript 131 (low) judged
+  transcript 87 (high) judged
+  transcript 112 (high) judged
+  transcript 123 (low) judged
+  transcript 130 (low) judged
+  transcript 60 (high) judged
+  transcript 113 (high) judged
+  transcript 39 (high) judged
+  transcript 1 (high) judged
+  transcript 33 (high) judged
+  transcript 6 (high) judged
+  transcript 27 (low) judged
+  transcript 81 (high) judged
+  transcript 92 (low) judged
+  transcript 69 (low) judged
+  transcript 0 (high) judged
+  transcript 99 (high) judged
+  transcript 48 (high) judged
+  transcript 77 (high) judged
+  transcript 126 (low) judged
+  transcript 118 (low) judged
+  transcript 114 (high) judged
+  transcript 44 (low) judged
+  transcript 13 (high) judged
+  transcript 90 (low) judged
+  transcript 53 (low) judged
+  transcript 28 (high) judged
+  transcript 10 (low) judged
+  transcript 106 (low) judged
+  transcript 9 (low) judged
+  transcript 102 (low) judged
+  transcript 32 (low) judged
+  transcript 72 (low) judged
+  transcript 59 (low) judged
+  transcript 57 (low) judged
+  transcript 74 (low) judged
+  transcript 54 (high) judged
+
+AUC (high vs low MI quality):
+  empathy          AUC 0.99   mean high 3.65 vs low 1.26
+  autonomy         AUC 0.96   mean high 3.65 vs low 1.22
+  nonjudgment      AUC 0.92   mean high 4.20 vs low 1.78
+  relational_mean  AUC 0.98   mean high 3.83 vs low 1.42
+Total spent: $1.95

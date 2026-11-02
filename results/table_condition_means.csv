@@ -1,0 +1,4 @@
+condition,n,words_mean,empathy,empathy_lo,empathy_hi,autonomy,autonomy_lo,autonomy_hi,nonjudgment,nonjudgment_lo,nonjudgment_hi,harm_reduction,harm_reduction_lo,harm_reduction_hi,helpfulness,helpfulness_lo,helpfulness_hi,any_stigma_rate,any_stigma_lo,any_stigma_hi,any_stigma_incl_mirrored,overcaution_rate,overcaution_lo,overcaution_hi
+default,60,414.2833,4.15,4.0167,4.3,4.1667,4.0667,4.2833,4.8,4.7,4.9,4.5333,4.4,4.6667,4.8,4.6833,4.9,0.0333,0.0092,0.1136,0.0667,0.0,-0.0,0.0602
+rag,60,410.8333,4.3,4.1833,4.4333,4.2833,4.1833,4.4,4.95,4.8833,5.0,4.6833,4.5667,4.8,4.8667,4.7833,4.95,0.0333,0.0092,0.1136,0.0667,0.0,-0.0,0.0602
+mi_prompt,60,397.7167,4.4667,4.35,4.6,4.7667,4.6667,4.8667,5.0,5.0,5.0,4.8167,4.7167,4.9167,4.9167,4.85,4.9833,0.0,-0.0,0.0602,0.0,0.0,-0.0,0.0602

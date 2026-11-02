@@ -81,7 +81,62 @@ One function, `ask()`, sends a prompt to either Claude (paid API) or Gemini (fre
 
 *What happened:* on basic overdose questions, a strong model already knows the answers. RAG lost points mainly on "How do you give nasal naloxone?": the documents don't contain step-by-step nozzle instructions (the SAMHSA toolkit points to the product label), so RAG correctly said so and stopped, while the model answered fully from memory. This shows RAG is only as good as its library, and that the answer key should be checked against what the sources actually contain. Six questions is a pilot, not a result; the full 31-question run is the real test, and the communication/research questions are where RAG should matter most.
 
+## Tone study (Study 1): how does the AI *talk* to people who use drugs?
+Accuracy turned out to be mostly solved, so the question moved to tone: empathy, pushiness, moralizing, stigma
+and over-caution. Full results are in `results/RESULTS.md`; every deviation from the plan is in
+`results/decisions.md`.
+
+1. **Messages (`eval/make_tone_messages.py` → `eval/tone_messages.csv`).**
+   - 10 scenarios × 6 substances = 60 texting-style messages. Examples: relapse after 7 months, a near-overdose
+     after mixing, a parent whose husband says "kick him out".
+   - Same scenario, different substance, so any difference between substances isn't caused by a different
+     story.
+   - AI-written for now and labeled as such; Shubham reviews and edits them.
+2. **Three conditions (`eval/tone_run.py`).** Claude Sonnet 5.5 answers each message:
+   - plain ("You are a helpful assistant");
+   - with RAG excerpts from our corpus;
+   - with an MI/harm-reduction system prompt.
+   - Replies are cached, so a re-run only pays for changed messages.
+3. **Rubric (`eval/tone_rubric.md`).**
+   - Adapted from the MITI 4.2.1, the standard tool for rating motivational-interviewing quality, plus
+     TIP 35 and harm-reduction papers.
+   - Five 1–5 scores (empathy, autonomy, non-judgment, harm reduction, helpfulness), over-caution yes/no, and
+     MITI behavior codes such as "persuade without permission".
+   - The plain-language cheat sheet is `eval/scoring_cheatsheet.html`.
+4. **Judge (`eval/tone_judge.py`).**
+   - Claude Opus 5.5 scores each reply. It is blinded (never told the condition), sees replies in shuffled
+     order, and writes its reason before each score.
+   - **Why a different model:** a model judging its own output tends to favor it.
+5. **Stigma counter (`eval/stigma_terms.py`, no AI).**
+   - Counts NIDA *Words Matter* terms. A term the sender used first doesn't count (mirroring rule).
+   - A term the reply only *mentions* doesn't count either, e.g. *avoid labels like "addict"*.
+   - That second rule was added after the first count wrongly showed RAG tripling stigma (decisions #13).
+     Always read the hits.
+6. **Is the judge any good? (`eval/judge_validation.py`, `eval/compute_agreement.py`)**
+   - On real counseling transcripts that experts labeled high or low MI quality (AnnoMI), the judge separates
+     them with AUC 0.98.
+   - Shubham also scores 30 replies blind, and weighted kappa measures agreement with the judge.
+7. **Statistics (`eval/tone_analysis.py`).**
+   - Every message is answered under all three conditions, so each message is compared with itself (paired
+     tests: Wilcoxon, McNemar).
+   - Confidence intervals are bootstrapped over messages.
+   - Holm correction is applied because 5 dimensions are tested at once.
+   - Figures go in `figures/`.
+
+**Main results (preliminary, AI-written messages):**
+- Default Claude was already good (a ceiling effect).
+- The MI prompt helped most, especially autonomy: +0.6, and "pushing treatment unasked" dropped from 13% to 0%.
+- RAG helped a little.
+- Stigmatizing words were rare (0–3%).
+- Over-caution: 0/180.
+
+**Study 2A (`study2/`):** can masked message wording reveal the substance? So far only a pipeline check on our
+own templates, not a finding. Real data needs Erowid's permission. There is a dual-use risk, so nothing that
+profiles people gets built.
+
 ## Limitations to be upfront about
+- Tone study: AI-written messages; the judge is the same vendor as the model; rubric, RAG corpus and MI prompt
+  share sources (circularity); one reply per message. See `results/RESULTS.md`.
 - 31 questions is small; the answer key was written by one person; an LLM judge is not a clinician. Next step: have a clinician grade a sample to check the judge agrees.
 - Only CC-licensed or PMC-available papers are included, which skews toward open-access journals.
 - ASAM is 396 of 950 chunks; a large document can crowd results (the reranker helps).

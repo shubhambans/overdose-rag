@@ -1,0 +1,4 @@
+measure,ours,ours_ci,wang_2025,note
+"Any stigmatizing term, default",0.03333333333333333,0.9% to 11.4%,0.354,"Wang: 14 LLMs, 60 clinician-written questions. Ours: 1 model, first-person messages; unprompted terms only"
+"Any stigmatizing term, with anti-stigma prompt",0.0,-0.0% to 6.0%,0.063,Prompts differ: Wang's prompt engineering vs our MI/harm-reduction system prompt
+"Any stigmatizing term, with guidance (RAG)",0.03333333333333333,0.9% to 11.4%,,No equivalent condition in Wang et al.

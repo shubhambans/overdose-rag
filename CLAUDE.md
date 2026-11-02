@@ -49,6 +49,24 @@ GEMINI_API_KEY=...      # free tier, only ~20 requests/day per model
 - **Retrieval** (31 questions; right source #1 / in top 5): semantic 77%/97%, keyword 87%/97%, hybrid 94%/97%, **hybrid+rerank 94%/100% (MRR 0.97)**. The reranker was added because "recovery position" kept retrieving addiction-*recovery* chunks.
 - **Accuracy pilot** (6 questions, Gemini 3.5 Flash answering, Gemini 3.1 Flash-Lite judging): no-RAG 94% coverage vs RAG 82%; 0 errors either way; RAG 6/6 faithful. The gap came mostly from "how to give nasal naloxone": the corpus has no step-by-step nozzle instructions, so RAG correctly declined.
   - Lesson: answer keys must only expect what the corpus contains, or the eval measures corpus coverage instead of RAG.
+- **Tone study, first full run (2026-11-02).** Details: `results/RESULTS.md`, deviations: `results/decisions.md`.
+  - Design: 60 AI-written messages × 3 conditions; Sonnet 5.5 responds, Opus 5.5 judges (blinded).
+  - **Judge validated** on AnnoMI: AUC 0.98.
+  - **Ceiling effect:** default replies already score 4–5.
+  - **MI prompt:** best on every dimension; autonomy +0.60 (95% CI 0.45 to 0.75); "persuade without
+    permission" 13% → 0%.
+  - **RAG:** small gains (empathy +0.15, non-judgment +0.15; Holm p < 0.05).
+  - **Stigma terms:** 3% / 3% / 0%, vs Wang 2025's 35%.
+    - The naive counter wrongly counted *advice against labels* as stigma. Fixed with the mention-vs-use
+      rule (decisions #13).
+  - **Over-caution:** 0/180.
+  - **Study 2A:** pipeline check only.
+  - **Spend:** $9.27 of $18.
+  - **Pending (Shubham):**
+    - review and edit the messages, then re-run;
+    - hand-score `eval/hand_scoring_sheet.csv`, then run `python eval/compute_agreement.py`;
+    - rule on the 4 remaining stigma hits;
+    - send the Erowid email.
 - Gemini free tier: newest Flash models (3.6–3.8) often return 503 "high demand"; 3.5 Flash works but allows only 20 requests/day.
 
 ## ▶ CURRENT TASK: execute `PLAN.md`

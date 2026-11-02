@@ -17,6 +17,24 @@ EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 CHUNK_WORDS = 250
 OVERLAP_WORDS = 50
 
+# Third collection, "communication": clinical guidance on HOW to talk with people who use drugs.
+# These files stay in rubric_sources/ (git-ignored; some are copyrighted) and are indexed in place.
+# Deliberately NOT indexed: miti_* (the judge's rubric) and Conversations/AnnoMI (judge validation).
+SOURCES = ROOT / "rubric_sources"
+COMMUNICATION = {
+    "tip-35-pep19-02-01-003.pdf": "SAMHSA TIP 35: Enhancing Motivation for Change in SUD Treatment (2019)",
+    "VA-DoD-SUD-CPG_Final_for-508_v3.pdf": "VA/DoD Clinical Practice Guideline for Substance Use Disorders",
+    "hr_framework.pdf": "SAMHSA Harm Reduction Framework (2023)",
+    "How to talk to patients/3 steps for talking with patients about substance use disorder (1).pdf":
+        "3 steps for talking with patients about substance use disorder",
+    "How to talk to patients/How to talk about substance use disorders with your patients _ American Medical Association.pdf":
+        "AMA: How to talk about substance use disorders with your patients",
+    "How to talk to patients/Words Matter - Terms to Use and Avoid When Talking About Addiction _ National Institute on Drug Abuse (NIDA).pdf":
+        "NIDA Words Matter: Terms to Use and Avoid",
+    "How to talk to patients/Words Matter_ Preferred Language for Talking About Addiction _ National Institute on Drug Abuse (NIDA).pdf":
+        "NIDA Words Matter: Preferred Language",
+}
+
 
 def load_pages(path: Path):
     """Yield (page_number, text) for a PDF or text file."""
@@ -51,11 +69,18 @@ def main():
     files = sorted(p for p in DOCS.rglob("*") if p.suffix.lower() in {".pdf", ".txt", ".md"})
     if not files:
         raise SystemExit(f"No documents in {DOCS}. Add PDFs first.")
+    comm = [SOURCES / name for name in COMMUNICATION if (SOURCES / name).exists()]
+    missing = [n for n in COMMUNICATION if not (SOURCES / n).exists()]
+    if missing:
+        print("Communication files not found (skipped):", missing)
 
     chunks = []
-    for f in files:
-        collection = "research" if "papers" in f.parts else "guidance"
-        label = label_for(f)
+    for f in files + comm:
+        if f in comm:
+            collection, label = "communication", COMMUNICATION[f.relative_to(SOURCES).as_posix()]
+        else:
+            collection = "research" if "papers" in f.parts else "guidance"
+            label = label_for(f)
         n = 0
         for page, text in load_pages(f):
             for piece in chunk(text):

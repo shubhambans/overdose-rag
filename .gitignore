@@ -9,3 +9,4 @@ eval/cache/
 rubric_sources/*
 !rubric_sources/README.md
 results/api_usage.csv
+API.txt

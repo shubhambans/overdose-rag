@@ -1,0 +1,44 @@
+transcript_id,mi_quality,topic,full_words,used_words,empathy,autonomy,nonjudgment,relational_mean
+17,low,reducing alcohol consumption,723,723,2,1,2,1.6666666666666667
+15,low,smoking cessation ,601,601,1,1,2,1.3333333333333333
+7,high,reducing alcohol consumption,789,789,3,4,5,4.0
+45,high,compliance with rules,750,750,4,4,4,4.0
+115,low,smoking cessation,509,509,1,1,2,1.3333333333333333
+20,high,smoking cessation ,1000,1000,4,4,4,4.0
+131,low,smoking cessation,1292,1292,3,3,5,3.6666666666666665
+87,high,reducing alcohol consumption,419,419,4,4,5,4.333333333333333
+112,high,reducing alcohol consumption,1527,1500,4,4,5,4.333333333333333
+123,low,smoking cessation,888,888,1,1,1,1.0
+130,low,smoking cessation; reducing alcohol consumption,894,894,1,1,1,1.0
+60,high,smoking cessation ,1158,1158,4,4,5,4.333333333333333
+113,high,smoking cessation,1222,1222,4,4,4,4.0
+39,high,smoking cessation ,1587,1434,4,4,5,4.333333333333333
+1,high,reducing alcohol consumption,798,798,3,4,3,3.3333333333333335
+33,high,smoking cessation ,690,690,4,5,5,4.666666666666667
+6,high,asthma management,767,767,4,5,5,4.666666666666667
+27,low,asthma management,589,589,1,1,1,1.0
+81,high,taking medicine / following medical procedure,223,223,4,4,5,4.333333333333333
+92,low,asthma management,498,498,1,1,1,1.0
+69,low,providing information on medicines,119,119,1,2,4,2.3333333333333335
+0,high,reducing alcohol consumption,808,808,4,4,4,4.0
+99,high,reducing alcohol consumption,916,916,3,3,3,3.0
+48,high,diabetes management,273,273,4,4,4,4.0
+77,high,more exercise / increasing activity,838,838,3,2,4,3.0
+126,low,taking medicine / following medical procedure,1393,1393,2,3,4,3.0
+118,low,diagnosis,587,587,1,1,1,1.0
+114,high,reducing alcohol consumption,1013,1013,3,3,4,3.3333333333333335
+44,low,reducing alcohol consumption,2014,1492,2,1,2,1.6666666666666667
+13,high,taking medicine / following medical procedure,372,372,4,3,4,3.6666666666666665
+90,low,reducing alcohol consumption,915,915,1,1,1,1.0
+53,low,reducing alcohol consumption,1849,1476,1,1,1,1.0
+28,high,smoking cessation ,1468,1468,4,3,4,3.6666666666666665
+10,low,diabetes management,229,229,1,1,2,1.3333333333333333
+106,low,smoking cessation,582,582,1,1,1,1.0
+9,low,reducing alcohol consumption,599,599,1,1,2,1.3333333333333333
+102,low,more exercise / increasing activity,419,419,1,1,1,1.0
+32,low,compliance with rules,405,405,1,1,1,1.0
+72,low,reducing alcohol consumption; compliance with rules,794,794,2,1,2,1.6666666666666667
+59,low,not getting into a car with someone who is under the influence of drugs or alcohol,172,172,1,1,1,1.0
+57,low,taking medicine / following medical procedure,370,370,1,1,2,1.3333333333333333
+74,low,better oral health,350,350,1,1,1,1.0
+54,high,more exercise / increasing activity,541,541,2,1,2,1.6666666666666667

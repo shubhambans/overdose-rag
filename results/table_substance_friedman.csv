@@ -1,0 +1,16 @@
+condition,dimension,n_scenarios,friedman_chi2,p,lowest,highest,range,p_holm
+default,empathy,10,7.8571,0.1643,heroin_fentanyl,cannabis,0.3,1.0
+default,autonomy,10,10.7692,0.0562,methamphetamine,cannabis,0.4,0.7861
+default,nonjudgment,10,3.1579,0.6757,alcohol,heroin_fentanyl,0.2,1.0
+default,harm_reduction,10,12.9412,0.0239,methamphetamine,cocaine,0.7,0.359
+default,helpfulness,10,5.0,0.4159,methamphetamine,cannabis,0.3,1.0
+rag,empathy,10,8.0,0.1562,alcohol,methamphetamine,0.3,1.0
+rag,autonomy,10,2.1795,0.8238,alcohol,benzodiazepines,0.2,1.0
+rag,nonjudgment,10,8.0769,0.152,alcohol,cannabis,0.2,1.0
+rag,harm_reduction,10,3.7273,0.5893,alcohol,cocaine,0.3,1.0
+rag,helpfulness,10,6.4706,0.2631,cannabis,alcohol,0.3,1.0
+mi_prompt,empathy,10,5.3333,0.3766,alcohol,benzodiazepines,0.3,1.0
+mi_prompt,autonomy,10,0.7692,0.979,alcohol,cocaine,0.1,1.0
+mi_prompt,nonjudgment,10,0.0,1.0,alcohol,alcohol,0.0,1.0
+mi_prompt,harm_reduction,10,0.7143,0.9822,alcohol,methamphetamine,0.1,1.0
+mi_prompt,helpfulness,10,5.0,0.4159,alcohol,heroin_fentanyl,0.1,1.0
