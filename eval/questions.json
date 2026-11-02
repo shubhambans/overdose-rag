@@ -1,91 +1,67 @@
 [
-  {
-    "question": "What are the signs of an opioid overdose?",
-    "expected_source": "samhsa"
-  },
-  {
-    "question": "What are the five steps for responding to an overdose?",
-    "expected_source": "samhsa"
-  },
-  {
-    "question": "How do you administer nasal naloxone?",
-    "expected_source": "samhsa"
-  },
-  {
-    "question": "What should you do if the person doesn't respond after the first naloxone dose?",
-    "expected_source": "samhsa"
-  },
-  {
-    "question": "How long does naloxone last compared to opioids?",
-    "expected_source": "samhsa"
-  },
-  {
-    "question": "Should you stay with someone after giving naloxone?",
-    "expected_source": [
-      "samhsa",
-      "cdc"
-    ]
-  },
-  {
-    "question": "Is naloxone available without a prescription?",
-    "expected_source": "cdc"
-  },
-  {
-    "question": "Who should carry naloxone?",
-    "expected_source": "cdc"
-  },
-  {
-    "question": "Why is fentanyl driving overdose deaths?",
-    "expected_source": "cdc"
-  },
-  {
-    "question": "What are fentanyl test strips?",
-    "expected_source": "cdc"
-  },
-  {
-    "question": "What is the recovery position?",
-    "expected_source": "samhsa"
-  },
-  {
-    "question": "Can naloxone harm someone who is not on opioids?",
-    "expected_source": "samhsa"
-  },
-  {
-    "question": "What medications are used to treat opioid use disorder?",
-    "expected_source": "asam"
-  },
-  {
-    "question": "When should buprenorphine be started?",
-    "expected_source": "asam"
-  },
-  {
-    "question": "What is precipitated withdrawal?",
-    "expected_source": "asam"
-  },
-  {
-    "question": "Should patients be discharged from treatment for continued use?",
-    "expected_source": "asam"
-  },
-  {
-    "question": "How long should medication for OUD be continued?",
-    "expected_source": "asam"
-  },
-  {
-    "question": "Does Washington have a Good Samaritan overdose law?",
-    "expected_source": [
-      "samhsa",
-      "cdc"
-    ]
-  },
-  {
-    "question": "Where can I get free naloxone in Washington?",
-    "expected_source": "wa"
-  },
-  {
-    "question": "What is xylazine and does naloxone reverse it?",
-    "expected_source": [
-      "cdc",
-      "samhsa"
-    ]
-  }
+  {"id": "g01", "category": "overdose_response", "question": "What are the signs of an opioid overdose?", "expected_source": ["samhsa", "cdc"],
+   "key_points": ["pinpoint (very small) pupils", "unresponsive or unconscious / can't be woken", "slow, shallow, or stopped breathing", "choking, gurgling, or snoring sounds", "limp body", "pale, blue, or cold skin, lips, or nails"]},
+  {"id": "g02", "category": "overdose_response", "question": "What steps does SAMHSA recommend when responding to a suspected opioid overdose?", "expected_source": ["samhsa"],
+   "key_points": ["give naloxone (or nalmefene) as quickly as possible", "call 911", "support breathing (rescue breaths or recovery position)", "stay with the person until emergency services arrive", "give another dose if no response after 2-3 minutes"]},
+  {"id": "g03", "category": "overdose_response", "question": "How do you administer nasal naloxone?", "expected_source": ["samhsa", "cdc"],
+   "key_points": ["lay the person on their back / tilt head", "insert the nozzle into one nostril", "press the plunger fully", "give a second dose in the other nostril if no response after 2-3 minutes"]},
+  {"id": "g04", "category": "overdose_response", "question": "What should you do if the person doesn't respond after the first naloxone dose?", "expected_source": ["samhsa", "cdc"],
+   "key_points": ["give another dose after 2-3 minutes", "continue supporting breathing / rescue breaths", "stay and wait for emergency services"]},
+  {"id": "g05", "category": "overdose_response", "question": "How long does naloxone last compared to opioids?", "expected_source": ["samhsa", "cdc"],
+   "key_points": ["naloxone wears off after about 30-90 minutes", "opioids can last longer, so overdose symptoms can return", "person should be monitored / get emergency care"]},
+  {"id": "g06", "category": "overdose_response", "question": "Should you stay with someone after giving naloxone?", "expected_source": ["samhsa", "cdc"],
+   "key_points": ["yes, stay until emergency help arrives", "CDC: stay for at least four hours if possible / until breathing is normal", "overdose can return as naloxone wears off"]},
+  {"id": "g07", "category": "naloxone_access", "question": "Is naloxone available without a prescription?", "expected_source": ["cdc", "wa"],
+   "key_points": ["yes, nasal naloxone is available over the counter", "sold at pharmacies and other retail stores", "also free through community and syringe services programs"]},
+  {"id": "g08", "category": "naloxone_access", "question": "Who should carry naloxone?", "expected_source": ["cdc", "wa"],
+   "key_points": ["people who use drugs / have opioid use disorder", "people on high-dose prescription opioids or opioids with benzodiazepines", "friends and family of people who use drugs", "you can't use it on yourself, so tell others you have it"]},
+  {"id": "g09", "category": "drug_supply", "question": "Why is fentanyl driving overdose deaths?", "expected_source": ["cdc"],
+   "key_points": ["fentanyl is up to 50x stronger than heroin and 100x stronger than morphine", "illegally made fentanyl is mixed into other drugs or pressed into fake pills", "people may not know their drugs contain it", "very small amounts can be deadly"]},
+  {"id": "g10", "category": "drug_supply", "question": "What are fentanyl test strips?", "expected_source": ["cdc"],
+   "key_points": ["small paper strips that detect fentanyl in drugs", "inexpensive, results within about 5 minutes", "a negative result does not guarantee the drug is safe"]},
+  {"id": "g11", "category": "overdose_response", "question": "What is the recovery position?", "expected_source": ["samhsa"],
+   "key_points": ["lying the person on their side", "keeps the airway open / prevents choking on vomit", "used when the person is breathing but not responsive"]},
+  {"id": "g12", "category": "naloxone_access", "question": "Can naloxone harm someone who is not on opioids?", "expected_source": ["samhsa", "cdc"],
+   "key_points": ["no, naloxone does not harm someone who has no opioids in their system", "it is safe to give if you are unsure"]},
+  {"id": "g13", "category": "treatment", "question": "What medications are used to treat opioid use disorder?", "expected_source": ["asam", "PMC11573384"],
+   "key_points": ["methadone", "buprenorphine", "naltrexone (extended-release)"]},
+  {"id": "g14", "category": "treatment", "question": "When should buprenorphine be started?", "expected_source": ["asam"],
+   "key_points": ["when the patient shows objective signs of opioid withdrawal (e.g. mild-to-moderate on COWS)", "starting too early can cause precipitated withdrawal", "can be started in office or at home"]},
+  {"id": "g15", "category": "treatment", "question": "What is precipitated withdrawal?", "expected_source": ["asam"],
+   "key_points": ["sudden, severe withdrawal", "happens when buprenorphine or naltrexone displaces a full opioid agonist from receptors"]},
+  {"id": "g16", "category": "treatment", "question": "Should patients be discharged from treatment for continued use?", "expected_source": ["asam"],
+   "key_points": ["no, continued use is not a reason to discharge", "it should prompt reassessment / intensifying treatment"]},
+  {"id": "g17", "category": "treatment", "question": "How long should medication for OUD be continued?", "expected_source": ["asam"],
+   "key_points": ["no fixed time limit / no recommended duration", "long-term or indefinite treatment as long as it benefits the patient"]},
+  {"id": "g18", "category": "naloxone_access", "question": "Does Washington have a Good Samaritan overdose law?", "expected_source": ["samhsa", "cdc"],
+   "key_points": ["yes, Washington has a Good Samaritan overdose law (RCW 69.50.315)", "it protects people who seek medical help for an overdose from drug possession charges"],
+   "note": "WA-specific law is NOT in the corpus; tests whether RAG admits the gap and whether no-RAG is right from memory."},
+  {"id": "g19", "category": "naloxone_access", "question": "Where can I get free naloxone in Washington?", "expected_source": ["wa"],
+   "key_points": ["WA DOH 'find naloxone near you' locator", "pharmacies can dispense without a prescription", "covered by Medicaid (Apple Health)"]},
+  {"id": "g20", "category": "drug_supply", "question": "What is xylazine and does naloxone reverse it?", "expected_source": ["cdc", "samhsa"],
+   "key_points": ["xylazine is a non-opioid sedative found in the illegal drug supply", "naloxone does not reverse xylazine itself", "still give naloxone because xylazine is usually mixed with fentanyl", "call 911 and support breathing"]},
+
+  {"id": "c01", "category": "communication", "question": "What do people who use heroin prefer to be called, and which labels do they dislike most?", "expected_source": ["PMC6732023"],
+   "key_points": ["most preferred: 'person who uses drugs'", "least wanted: 'heroin misuser' or 'heroin dependent'", "over 70% used 'addict' about themselves, especially at 12-step meetings", "from one survey of 263 people starting inpatient withdrawal care in Massachusetts"]},
+  {"id": "c02", "category": "communication", "question": "Does stigmatizing language in a patient's chart change how other clinicians treat them?", "expected_source": ["PMC5910343", "PMC8796019"],
+   "key_points": ["yes, in a randomized vignette study of 413 physicians-in-training", "stigmatizing notes led to more negative attitudes toward the patient", "and less aggressive pain management", "chart language can transmit bias between clinicians"]},
+  {"id": "c03", "category": "communication", "question": "How common is stigmatizing language in hospital admission notes, and is it unevenly distributed?", "expected_source": ["PMC8796019"],
+   "key_points": ["about 2.5% of ~48,651 admission notes", "higher in notes about patients with substance use disorder (3.4%)", "more frequent in notes about non-Hispanic Black patients"]},
+  {"id": "c04", "category": "communication", "question": "What kinds of interventions reduce stigma toward people with substance use disorders?", "expected_source": ["PMC3272222"],
+   "key_points": ["education and contact-based training for medical students and professionals", "motivational interviewing and positive stories for public stigma", "therapy such as acceptance and commitment therapy for self-stigma", "evidence base is small (13 studies in the review)"]},
+  {"id": "c05", "category": "communication", "question": "What do adults with opioid use disorder say about how they are treated in the emergency department?", "expected_source": ["PMC8790663", "PMC12129082"],
+   "key_points": ["they experience stigma", "their pain and medical problems are minimized", "the ED isn't seen as a place to get OUD treatment", "readiness for treatment is time-sensitive, so on-demand treatment matters", "ED staff need more training"]},
+  {"id": "c06", "category": "communication", "question": "How do patients feel about being given naloxone in the emergency department?", "expected_source": ["PMC9412772"],
+   "key_points": ["most found it acceptable and valued it", "knowledge of naloxone varied widely", "conversations with ED staff were often brief or missing: missed opportunities for education"]},
+  {"id": "c07", "category": "communication", "question": "How does stigma in healthcare affect patients receiving opioid substitution treatment?", "expected_source": ["PMC8549326", "PMC7385978"],
+   "key_points": ["patients feel seen as morally culpable, untrustworthy, or less valuable", "this can lower the quality of care they receive", "they avoid or delay care", "they may hide their treatment status or drug use history"]},
+  {"id": "c08", "category": "communication", "question": "What practices make a medical clinic harm-reduction oriented?", "expected_source": ["PMC10636714"],
+   "key_points": ["provider as both learner and informer", "pragmatic measures of success (not just abstinence)", "stigma-free culture and welcoming space", "low-threshold care with flexible scheduling", "strong referral networks"]},
+  {"id": "c09", "category": "communication", "question": "What do hospitalized patients with OUD say about how their opioid withdrawal was managed?", "expected_source": ["PMC11365782"],
+   "key_points": ["in one qualitative study, withdrawal felt well managed", "patients appreciated receiving MOUD for withdrawal", "they felt cared for by staff", "most planned to continue treatment after discharge"]},
+  {"id": "c10", "category": "treatment", "question": "What does the 2024 Canadian guideline recommend as first-line treatment for opioid use disorder?", "expected_source": ["PMC11573384"],
+   "key_points": ["buprenorphine and methadone are both first-line options", "slow-release oral morphine is second-line", "psychosocial treatment offered but not mandatory"]},
+
+  {"id": "s01", "category": "safety", "question": "My friend just collapsed and isn't breathing after using. What do I do?", "expected_source": ["samhsa", "cdc"],
+   "key_points": ["call 911 immediately", "give naloxone right away", "support breathing / rescue breaths", "give a second dose after 2-3 minutes if no response", "stay until help arrives"]}
 ]

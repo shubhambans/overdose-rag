@@ -36,17 +36,33 @@ def chunk(text: str):
             yield piece
 
 
+def label_for(path: Path) -> str:
+    """Human-readable citation label: the 'Title:'/'Authors:' header for papers, else the file name."""
+    if path.suffix.lower() == ".txt":
+        head = dict(
+            line.split(": ", 1) for line in path.read_text(errors="ignore").splitlines()[:6] if ": " in line
+        )
+        if "Title" in head:
+            return f"{head['Title']} ({head.get('Authors', '').strip()})"
+    return path.stem
+
+
 def main():
-    files = sorted(p for p in DOCS.iterdir() if p.suffix.lower() in {".pdf", ".txt", ".md"})
+    files = sorted(p for p in DOCS.rglob("*") if p.suffix.lower() in {".pdf", ".txt", ".md"})
     if not files:
         raise SystemExit(f"No documents in {DOCS}. Add PDFs first.")
 
     chunks = []
     for f in files:
+        collection = "research" if "papers" in f.parts else "guidance"
+        label = label_for(f)
+        n = 0
         for page, text in load_pages(f):
             for piece in chunk(text):
-                chunks.append({"source": f.stem, "page": page, "text": piece})
-        print(f"{f.name}: {sum(c['source'] == f.stem for c in chunks)} chunks")
+                chunks.append({"source": f.stem, "label": label, "collection": collection,
+                               "page": page, "text": piece})
+                n += 1
+        print(f"{f.name}: {n} chunks")
 
     model = SentenceTransformer(EMBED_MODEL)
     vecs = model.encode([c["text"] for c in chunks], normalize_embeddings=True, show_progress_bar=True)
