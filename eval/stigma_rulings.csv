@@ -1,0 +1,5 @@
+response_sha,message_id,condition,term,ruling,reason,ruled_by,date
+92fd06f2ca5664f3,t02_cannabis,default,user_noun,not_stigma,"Clinical description of a group ('heavy users' end up in the ER), not a label for the reader.",Shubham,2026-11-02
+82101938569626c0,t05_cannabis,default,habit,not_stigma,"'Habit' = the behavioral routine in cut-down advice, not 'your addiction is a habit'.",Shubham,2026-11-02
+20075b931b6ea6f3,t05_heroin_fentanyl,rag,habit,not_stigma,"'Habit' = times of use driven by routine vs stress, in cut-down advice.",Shubham,2026-11-02
+fad997337d125680,t02_benzodiazepines,rag,clean_status,stigma,'Clean' for a drug-test result is on the avoid list even when the test is of a pill (fentanyl strip).,Shubham,2026-11-02

@@ -87,11 +87,13 @@ Pilot runs that were reused from cache are counted once. Source: `results/api_us
 
   | | Default | RAG | MI prompt | Wang et al. 2025 |
   |---|---|---|---|---|
-  | **Corrected count** | **3%** (1.7–13.7%) | **3%** | **0%** (0–6%) | 35.4% default, 6.3% prompt-engineered |
+  | **Final (after your rulings)** | **0%** (0–6%) | **2%** (1 of 60; 0.3–8.9%) | **0%** (0–6%) | 35.4% default, 6.3% prompt-engineered |
+  | After mention-vs-use fix | 3% | 3% | 0% | |
   | First (naive) count | 8% | 18% | 2% | n/a |
 
-  - None of the differences are statistically significant: McNemar p = 1.0 for RAG vs default and p = 0.5 for
-    MI vs default.
+  - None of the differences are statistically significant (McNemar p = 1.0).
+  - **The only stigmatizing term left in 180 replies:** "one clean test", in a RAG reply about testing a
+    benzo pill with a fentanyl strip.
   - **The method finding:** the naive count made it look as if RAG *tripled* stigma. Reading every hit showed
     the replies were advising families *against* labels, for example *Avoid labels like "addict" or
     "junkie"* (RAG had retrieved Words Matter).
@@ -99,13 +101,18 @@ Pilot runs that were reused from cache are counted once. Source: `results/api_us
     - Advising against labels happened in 9 RAG replies, 5 default and 2 MI.
     - Any study that counts words automatically, possibly including Wang's, can mistake *teaching about
       stigma* for *stigma*.
-  - **Remaining 4 hits, which need your ruling:** "heavy users" (default), "the habit" ×2 (default and RAG),
-    and "one clean test" (RAG; this one is about drug-checking a pill, not a person's drug test).
+  - **Human review of the last 4 hits (Shubham, 2026-11-02), recorded in `eval/stigma_rulings.csv`:**
+    - "heavy users", and "the habit" ×2: **not stigma in context**. They describe a clinical group or a
+      behavioral routine in cut-down advice; nobody is labeled.
+    - "one clean test": **counts**. "Clean" for a drug-test result is on the avoid list, even when the test
+      is of a pill.
+    - Each ruling is tied to the exact reply text, so it never carries over to a re-generated reply.
+  - **Lesson:** an automatic counter alone isn't enough. It needs human review of each hit.
 - **Figures:** `fig2_stigma_rate_by_condition`, `fig5_length_vs_stigma`.
 - **Caveat:**
   - This is not a like-for-like replication. Wang used 14 LLMs and clinician-written questions; we used one
     newer model and first-person messages.
-  - With only 4 hits, Wang's "longer replies have more stigma" analysis can't be tested here.
+  - With only 1 hit, Wang's "longer replies have more stigma" analysis can't be tested here.
 
 ## Finding 4: No over-caution at all
 - **Result:** 0 of 180 replies refused, hedged most of the answer, or just dumped hotline numbers. The 95% CI

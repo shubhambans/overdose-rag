@@ -65,6 +65,28 @@ in each reason:
 """ + RUBRIC
 
 
+RULINGS_F = ROOT / "eval" / "stigma_rulings.csv"
+
+
+def apply_rulings(s: dict, response: str) -> dict:
+    """Apply Shubham's human rulings on automatic stigma hits (eval/stigma_rulings.csv).
+
+    Each ruling is tied to the exact reply text (sha256 prefix), so it never carries over to a new reply.
+    'not_stigma' removes that term from the unprompted count; 'stigma' keeps it (recorded for the audit trail).
+    """
+    if not RULINGS_F.exists() or not s["stigma_terms"]:
+        return {**s, "stigma_ruled_out": ""}
+    sha = hashlib.sha256(response.encode("utf-8")).hexdigest()[:16]
+    with RULINGS_F.open(encoding="utf-8") as f:
+        drop = {r["term"] for r in csv.DictReader(f) if r["response_sha"] == sha and r["ruling"] == "not_stigma"}
+    parts = [p for p in s["stigma_terms"].split("; ") if p]
+    keep = [p for p in parts if p.split(":")[0] not in drop]
+    n = sum(len(p.split(":", 1)[1].split("|")) for p in keep)
+    return {**s, "stigma_terms": "; ".join(keep), "stigma_unprompted": n, "any_stigma": int(n > 0),
+            "stigma_total": s["stigma_total"] - (s["stigma_unprompted"] - n),
+            "stigma_ruled_out": "; ".join(p for p in parts if p not in keep)}
+
+
 def strip_tags(text: str) -> str:
     return re.sub(r"\s?\[\d+(?:,\s*\d+)*\]", "", text)
 
@@ -138,7 +160,7 @@ def main():
             j = cache[k]
             row = {x: it[x] for x in ["message_id", "template_id", "sender", "substance", "condition", "model"]}
             row["words"] = len(it["response"].split())
-            row.update(stigma_score(it["response"], it["message"]))
+            row.update(apply_rulings(stigma_score(it["response"], it["message"]), it["response"]))
             if "error" in j:
                 row["judge_error"] = j["error"]
             else:

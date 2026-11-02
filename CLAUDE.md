@@ -56,7 +56,7 @@ GEMINI_API_KEY=...      # free tier, only ~20 requests/day per model
   - **MI prompt:** best on every dimension; autonomy +0.60 (95% CI 0.45 to 0.75); "persuade without
     permission" 13% → 0%.
   - **RAG:** small gains (empathy +0.15, non-judgment +0.15; Holm p < 0.05).
-  - **Stigma terms:** 3% / 3% / 0%, vs Wang 2025's 35%.
+  - **Stigma terms:** 0% / 2% / 0% after Shubham reviewed each hit (eval/stigma_rulings.csv), vs Wang 2025: 35%.
     - The naive counter wrongly counted *advice against labels* as stigma. Fixed with the mention-vs-use
       rule (decisions #13).
   - **Over-caution:** 0/180.
@@ -65,7 +65,6 @@ GEMINI_API_KEY=...      # free tier, only ~20 requests/day per model
   - **Pending (Shubham):**
     - review and edit the messages, then re-run;
     - hand-score `eval/hand_scoring_sheet.csv`, then run `python eval/compute_agreement.py`;
-    - rule on the 4 remaining stigma hits;
     - send the Erowid email.
 - Gemini free tier: newest Flash models (3.6–3.8) often return 503 "high demand"; 3.5 Flash works but allows only 20 requests/day.
 

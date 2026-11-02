@@ -20,12 +20,12 @@
    "helpfulness": 4.8,
    "helpfulness_lo": 4.683,
    "helpfulness_hi": 4.9,
-   "any_stigma_rate": 0.033,
-   "any_stigma_lo": 0.009,
-   "any_stigma_hi": 0.114,
-   "any_stigma_incl_mirrored": 0.067,
+   "any_stigma_rate": 0.0,
+   "any_stigma_lo": 0.0,
+   "any_stigma_hi": 0.06,
+   "any_stigma_incl_mirrored": 0.033,
    "overcaution_rate": 0.0,
-   "overcaution_lo": -0.0,
+   "overcaution_lo": 0.0,
    "overcaution_hi": 0.06
   },
   {
@@ -47,12 +47,12 @@
    "helpfulness": 4.867,
    "helpfulness_lo": 4.783,
    "helpfulness_hi": 4.95,
-   "any_stigma_rate": 0.033,
-   "any_stigma_lo": 0.009,
-   "any_stigma_hi": 0.114,
-   "any_stigma_incl_mirrored": 0.067,
+   "any_stigma_rate": 0.017,
+   "any_stigma_lo": 0.003,
+   "any_stigma_hi": 0.089,
+   "any_stigma_incl_mirrored": 0.05,
    "overcaution_rate": 0.0,
-   "overcaution_lo": -0.0,
+   "overcaution_lo": 0.0,
    "overcaution_hi": 0.06
   },
   {
@@ -75,11 +75,11 @@
    "helpfulness_lo": 4.85,
    "helpfulness_hi": 4.983,
    "any_stigma_rate": 0.0,
-   "any_stigma_lo": -0.0,
+   "any_stigma_lo": 0.0,
    "any_stigma_hi": 0.06,
    "any_stigma_incl_mirrored": 0.0,
    "overcaution_rate": 0.0,
-   "overcaution_lo": -0.0,
+   "overcaution_lo": 0.0,
    "overcaution_hi": 0.06
   }
  ],
@@ -202,17 +202,17 @@
    "comparison": "rag vs default",
    "measure": "any_stigma",
    "n_pairs": 60,
-   "mean_default": 0.0333,
-   "mean_other": 0.0333,
-   "mean_diff": 0.0,
-   "mean_diff_lo": -0.0667,
-   "mean_diff_hi": 0.0667,
+   "mean_default": 0.0,
+   "mean_other": 0.0167,
+   "mean_diff": 0.0167,
+   "mean_diff_lo": 0.0,
+   "mean_diff_hi": 0.05,
    "median_diff": 0.0,
    "median_diff_lo": 0.0,
    "median_diff_hi": 0.0,
-   "n_better": 2,
-   "n_worse": 2,
-   "n_same": 56,
+   "n_better": 1,
+   "n_worse": 0,
+   "n_same": 59,
    "test": "McNemar exact",
    "p": 1.0,
    "p_holm": NaN
@@ -335,19 +335,19 @@
    "comparison": "mi_prompt vs default",
    "measure": "any_stigma",
    "n_pairs": 60,
-   "mean_default": 0.0333,
+   "mean_default": 0.0,
    "mean_other": 0.0,
-   "mean_diff": -0.0333,
-   "mean_diff_lo": -0.0833,
+   "mean_diff": 0.0,
+   "mean_diff_lo": 0.0,
    "mean_diff_hi": 0.0,
    "median_diff": 0.0,
    "median_diff_lo": 0.0,
    "median_diff_hi": 0.0,
    "n_better": 0,
-   "n_worse": 2,
-   "n_same": 58,
+   "n_worse": 0,
+   "n_same": 60,
    "test": "McNemar exact",
-   "p": 0.5,
+   "p": 1.0,
    "p_holm": NaN
   }
  ],
@@ -570,10 +570,10 @@
   {
    "condition": "default",
    "measure": "any_stigma",
-   "person": 0.0556,
+   "person": 0.0,
    "family": 0.0,
-   "diff": 0.0556,
-   "p_mannwhitney": 0.2541
+   "diff": 0.0,
+   "p_mannwhitney": 1.0
   },
   {
    "condition": "rag",
@@ -626,10 +626,10 @@
   {
    "condition": "rag",
    "measure": "any_stigma",
-   "person": 0.0556,
+   "person": 0.0278,
    "family": 0.0,
-   "diff": 0.0556,
-   "p_mannwhitney": 0.2541
+   "diff": 0.0278,
+   "p_mannwhitney": 0.4339
   },
   {
    "condition": "mi_prompt",
@@ -690,30 +690,30 @@
  ],
  "length": {
   "n": 180.0,
-  "n_with_stigma": 4.0,
-  "point_biserial_r": 0.07986329993068288,
-  "p": 0.28655151296118925,
+  "n_with_stigma": 1.0,
+  "point_biserial_r": 0.04872136281466403,
+  "p": 0.5160167753429719,
   "fit": null
  },
  "replication": [
   {
    "measure": "Any stigmatizing term, default",
-   "ours": 0.03333333333333333,
-   "ours_ci": "0.9% to 11.4%",
+   "ours": 0.0,
+   "ours_ci": "0.0% to 6.0%",
    "wang_2025": 0.354,
    "note": "Wang: 14 LLMs, 60 clinician-written questions. Ours: 1 model, first-person messages; unprompted terms only"
   },
   {
    "measure": "Any stigmatizing term, with anti-stigma prompt",
    "ours": 0.0,
-   "ours_ci": "-0.0% to 6.0%",
+   "ours_ci": "0.0% to 6.0%",
    "wang_2025": 0.063,
    "note": "Prompts differ: Wang's prompt engineering vs our MI/harm-reduction system prompt"
   },
   {
    "measure": "Any stigmatizing term, with guidance (RAG)",
-   "ours": 0.03333333333333333,
-   "ours_ci": "0.9% to 11.4%",
+   "ours": 0.016666666666666666,
+   "ours_ci": "0.3% to 8.9%",
    "wang_2025": NaN,
    "note": "No equivalent condition in Wang et al."
   }

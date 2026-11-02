@@ -127,7 +127,7 @@ and over-caution. Full results are in `results/RESULTS.md`; every deviation from
 - Default Claude was already good (a ceiling effect).
 - The MI prompt helped most, especially autonomy: +0.6, and "pushing treatment unasked" dropped from 13% to 0%.
 - RAG helped a little.
-- Stigmatizing words were rare (0–3%).
+- Stigmatizing words were rare (0–2%, after human review of each automatic hit).
 - Over-caution: 0/180.
 
 **Study 2A (`study2/`):** can masked message wording reveal the substance? So far only a pipeline check on our

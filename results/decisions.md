@@ -56,9 +56,10 @@
     - The RAG effect was an artifact: the retrieved "Words Matter" guidance made the model coach families
       about language. A plain word counter can't tell coaching from labeling, and Wang et al. 2025's
       counter may share this problem.
-    - Remaining 4 hits, for Shubham to rule on: "heavy users" (default), "the habit" ×2 (one default, one
-      RAG), and "one clean test" (RAG; this is about a fentanyl test strip on a pill, not a person's drug
-      test).
+    - The remaining 4 hits were ruled on by Shubham (`eval/stigma_rulings.csv`, applied in `tone_judge.py`):
+      - "heavy users" and "the habit" ×2: not stigma in context;
+      - "one clean test": counts.
+    - Final rates: default 0%, RAG 2%, MI 0%.
 14. **Length vs. stigma: no logistic fit when there are fewer than 10 events.**
     - With 4 stigma replies out of 180, the odds ratio's CI ran from 0.5 to 15.8, i.e. noise.
     - The rule of thumb is ≥10 events per predictor. The point-biserial correlation is still reported
