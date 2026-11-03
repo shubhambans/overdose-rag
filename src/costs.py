@@ -11,11 +11,42 @@ Thinking tokens are billed as output tokens and are included in usage.output_tok
 """
 import csv
 import datetime
+import contextlib
+import os
+import threading
+import time
 from pathlib import Path
+
+_LOCK = threading.Lock()
+
+
+@contextlib.contextmanager
+def _file_lock():
+    """Lock shared by threads AND separate processes (two scripts can run at once and share the log).
+    Uses an exclusive lock file: create-or-wait."""
+    lock = LOG.with_suffix(".lock")
+    with _LOCK:
+        for _ in range(2000):
+            try:
+                fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+                break
+            except FileExistsError:
+                with contextlib.suppress(FileNotFoundError):  # the holder may release it between our checks
+                    if time.time() - lock.stat().st_mtime > 30:  # stale lock from a killed process
+                        lock.unlink()
+                time.sleep(0.01)
+        else:
+            raise TimeoutError("could not lock the cost log")
+        try:
+            yield
+        finally:
+            os.close(fd)
+            with contextlib.suppress(FileNotFoundError):
+                lock.unlink()
 
 ROOT = Path(__file__).resolve().parent.parent
 LOG = ROOT / "results" / "api_usage.csv"
-HARD_STOP_USD = 18.00
+HARD_STOP_USD = 32.00
 
 PRICES = {  # model: (input, output, cache_read) per 1M tokens
     "claude-opus-5-5": (4.00, 20.00, 0.20),
@@ -41,8 +72,14 @@ def price(model, input_tokens, output_tokens, cache_write=0, cache_read=0, batch
 def spent() -> float:
     if not LOG.exists():
         return 0.0
-    with LOG.open(newline="") as f:
-        return sum(float(r["usd"]) for r in csv.DictReader(f))
+    total = 0.0
+    with _file_lock(), LOG.open(newline="") as f:
+        for r in csv.DictReader(f):
+            try:
+                total += float(r["usd"])
+            except (TypeError, ValueError):  # a malformed line; never let it crash a run
+                continue
+    return total
 
 
 def check(projected: float = 0.0):
@@ -59,13 +96,14 @@ def log(model, usage, phase="", batch=False) -> float:
     cr = getattr(usage, "cache_read_input_tokens", 0) or 0
     usd = price(model, usage.input_tokens, usage.output_tokens, cw, cr, batch)
     LOG.parent.mkdir(exist_ok=True)
-    new = not LOG.exists()
-    with LOG.open("a", newline="") as f:
-        w = csv.writer(f)
-        if new:
-            w.writerow(FIELDS)
-        w.writerow([datetime.datetime.now().isoformat(timespec="seconds"), phase, model,
-                    usage.input_tokens, usage.output_tokens, cw, cr, int(batch), f"{usd:.6f}"])
+    with _file_lock():  # threads and separate scripts may write at the same moment
+        new = not LOG.exists()
+        with LOG.open("a", newline="") as f:
+            w = csv.writer(f)
+            if new:
+                w.writerow(FIELDS)
+            w.writerow([datetime.datetime.now().isoformat(timespec="seconds"), phase, model,
+                        usage.input_tokens, usage.output_tokens, cw, cr, int(batch), f"{usd:.6f}"])
     return usd
 
 

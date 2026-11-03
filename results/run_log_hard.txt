@@ -1,0 +1,95 @@
+90 responses (30 messages x 3 conditions). Projected cost if none cached: $0.97. Spent so far: $10.04
+  h01_heroin_fentanyl        default     527 words
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3490.42it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/105 [00:00<?, ?it/s]Loading weights: 100%|██████████| 105/105 [00:00<00:00, 4032.25it/s]
+  h01_heroin_fentanyl        rag         452 words
+  h01_heroin_fentanyl        mi_prompt   392 words
+  h02_methamphetamine        default     330 words
+  h02_methamphetamine        rag         387 words
+  h02_methamphetamine        mi_prompt   395 words
+  h03_alcohol                default     395 words
+  h03_alcohol                rag         345 words
+  h03_alcohol                mi_prompt   365 words
+  h04_cocaine                default     482 words
+  h04_cocaine                rag         468 words
+  h04_cocaine                mi_prompt   468 words
+  h05_heroin_fentanyl        default     494 words
+  h05_heroin_fentanyl        rag         392 words
+  h05_heroin_fentanyl        mi_prompt   431 words
+  h06_benzodiazepines        default     382 words
+  h06_benzodiazepines        rag         391 words
+  h06_benzodiazepines        mi_prompt   380 words
+  h07_alcohol                default     443 words
+  h07_alcohol                rag         369 words
+  h07_alcohol                mi_prompt   369 words
+  h08_cannabis               default     369 words
+  h08_cannabis               rag         321 words
+  h08_cannabis               mi_prompt   316 words
+  h09_heroin_fentanyl        default     219 words
+  h09_heroin_fentanyl        rag         261 words
+  h09_heroin_fentanyl        mi_prompt   277 words
+  h10_cocaine                default     303 words
+  h10_cocaine                rag         354 words
+  h10_cocaine                mi_prompt   327 words
+  h11_methamphetamine        default     340 words
+  h11_methamphetamine        rag         403 words
+  h11_methamphetamine        mi_prompt   371 words
+  h12_alcohol                default     291 words
+  h12_alcohol                rag         261 words
+  h12_alcohol                mi_prompt   294 words
+  h13_heroin_fentanyl        default     377 words
+  h13_heroin_fentanyl        rag         338 words
+  h13_heroin_fentanyl        mi_prompt   395 words
+  h14_benzodiazepines        default     334 words
+  h14_benzodiazepines        rag         326 words
+  h14_benzodiazepines        mi_prompt   337 words
+  h15_methamphetamine        default     380 words
+  h15_methamphetamine        rag         411 words
+  h15_methamphetamine        mi_prompt   426 words
+  h16_cocaine                default     336 words
+  h16_cocaine                rag         377 words
+  h16_cocaine                mi_prompt   389 words
+  h17_heroin_fentanyl        default     293 words
+  h17_heroin_fentanyl        rag         219 words
+  h17_heroin_fentanyl        mi_prompt   367 words
+  h18_methamphetamine        default     234 words
+  h18_methamphetamine        rag         246 words
+  h18_methamphetamine        mi_prompt   254 words
+  h19_alcohol                default     286 words
+  h19_alcohol                rag         334 words
+  h19_alcohol                mi_prompt   313 words
+  h20_benzodiazepines        default     290 words
+  h20_benzodiazepines        rag         270 words
+  h20_benzodiazepines        mi_prompt   343 words
+  h21_heroin_fentanyl        default     349 words
+  h21_heroin_fentanyl        rag         312 words
+  h21_heroin_fentanyl        mi_prompt   321 words
+  h22_alcohol                default     435 words
+  h22_alcohol                rag         459 words
+  h22_alcohol                mi_prompt   358 words
+  h23_methamphetamine        default     496 words
+  h23_methamphetamine        rag         488 words
+  h23_methamphetamine        mi_prompt   436 words
+  h24_heroin_fentanyl        default     402 words
+  h24_heroin_fentanyl        rag         457 words
+  h24_heroin_fentanyl        mi_prompt   347 words
+  h25_cocaine                default     408 words
+  h25_cocaine                rag         390 words
+  h25_cocaine                mi_prompt   389 words
+  h26_benzodiazepines        default     521 words
+  h26_benzodiazepines        rag         514 words
+  h26_benzodiazepines        mi_prompt   428 words
+  h27_alcohol                default     351 words
+  h27_alcohol                rag         306 words
+  h27_alcohol                mi_prompt   342 words
+  h28_heroin_fentanyl        default     402 words
+  h28_heroin_fentanyl        rag         369 words
+  h28_heroin_fentanyl        mi_prompt   368 words
+  h29_cannabis               default     326 words
+  h29_cannabis               rag         336 words
+  h29_cannabis               mi_prompt   338 words
+  h30_cocaine                default     364 words
+  h30_cocaine                rag         326 words
+  h30_cocaine                mi_prompt   391 words
+Done: 90 new responses. Total spent: $25.52

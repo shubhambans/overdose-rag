@@ -1,0 +1,35 @@
+{
+ "n": 360,
+ "events": 44,
+ "wang_native_pct": 35.4,
+ "wang_engineered_pct": 6.3,
+ "ours_native_pct": 23.9,
+ "ours_engineered_pct": 0.6,
+ "words_vs_sl_pointbiserial": [
+  -0.13825910410446463,
+  0.008619561571535657
+ ],
+ "adjusted_OR": {
+  "topic_ALD": 11.255,
+  "topic_SUD": 0.643,
+  "engineered": 0.012,
+  "words_per100": 1.0
+ },
+ "mcnemar_native_only": 43,
+ "mcnemar_engineered_only": 1,
+ "mcnemar_p": 5.115907697472721e-12,
+ "native_topic_rates": {
+  "ALD": 0.55,
+  "AUD": 0.1,
+  "SUD": 0.067
+ },
+ "adjudicated_pct": {
+  "engineered": 0.6,
+  "native": 20.6
+ },
+ "adjudicated_native_topic_rates": {
+  "ALD": 0.55,
+  "AUD": 0.067,
+  "SUD": 0.0
+ }
+}

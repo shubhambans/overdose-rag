@@ -120,9 +120,9 @@ def cache_key(message, reply):
     return hashlib.sha256(json.dumps([JUDGE, JUDGE_SYSTEM, message, reply]).encode()).hexdigest()[:16]
 
 
-def current_responses() -> list[dict]:
+def current_responses(messages=MESSAGES) -> list[dict]:
     """Latest response per (message_id, condition) whose message text matches the current CSV."""
-    texts = {r["id"]: r["text"] for r in csv.DictReader(MESSAGES.open(encoding="utf-8"))}
+    texts = {r["id"]: r["text"] for r in csv.DictReader(open(messages, encoding="utf-8"))}
     latest = {}
     for r in map(json.loads, RESPONSES.read_text(encoding="utf-8").splitlines()):
         if texts.get(r["message_id"]) == r["message"]:
@@ -133,9 +133,12 @@ def current_responses() -> list[dict]:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--messages", default=str(MESSAGES))
+    ap.add_argument("--out", default=str(OUT))
     args = ap.parse_args()
+    out_path = Path(args.out)
 
-    items = current_responses()
+    items = current_responses(args.messages)
     random.Random(42).shuffle(items)  # blind to order: conditions interleaved
     items = items[: args.limit]
     cache = {}
@@ -174,12 +177,12 @@ def main():
             rows.append(row)
 
     fields = sorted({k for r in rows for k in r}, key=lambda k: list(rows[0]).index(k) if k in rows[0] else 99)
-    with OUT.open("w", newline="", encoding="utf-8") as f:
+    with out_path.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
         w.writerows(rows)
     errs = sum("judge_error" in r for r in rows)
-    print(f"Wrote {len(rows)} rows to {OUT} ({errs} judge errors). Total spent: ${costs.spent():.2f}")
+    print(f"Wrote {len(rows)} rows to {out_path} ({errs} judge errors). Total spent: ${costs.spent():.2f}")
 
 
 if __name__ == "__main__":

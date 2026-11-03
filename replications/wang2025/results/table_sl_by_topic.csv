@@ -1,0 +1,7 @@
+condition,topic,size,mean
+engineered,ALD,60,0.016666666666666666
+engineered,AUD,60,0.0
+engineered,SUD,60,0.0
+native,ALD,60,0.55
+native,AUD,60,0.1
+native,SUD,60,0.06666666666666667

@@ -1,0 +1,51 @@
+id,source_org,source_type,url,question,accessed
+f01,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,What is opioid use disorder?,2026-11-02
+f02,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,What is methadone?,2026-11-02
+f03,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,Where can people get methadone treatment?,2026-11-02
+f04,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,What is buprenorphine?,2026-11-02
+f05,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,Where can people get buprenorphine?,2026-11-02
+f06,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,What is naltrexone?,2026-11-02
+f07,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,Do medications for opioid use disorder work?,2026-11-02
+f08,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,Are medications for opioid use disorder addictive?,2026-11-02
+f09,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,Why do so few people get medications for opioid use disorder?,2026-11-02
+f10,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,Are medications for opioid use disorder safe to use during pregnancy and breastfeeding?,2026-11-02
+f11,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/medications-opioid-use-disorder,Do medications for opioid use disorder interfere with pain treatment?,2026-11-02
+f12,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/fentanyl,What is fentanyl?,2026-11-02
+f13,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/fentanyl,Why is fentanyl dangerous?,2026-11-02
+f14,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/fentanyl,How can I find out if my drugs or pills contain fentanyl?,2026-11-02
+f15,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/fentanyl,What should I do if I think someone is overdosing?,2026-11-02
+f16,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/opioids,Are opioids addictive?,2026-11-02
+f17,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/publications/drugfacts/naloxone,Is Narcan® the same as naloxone?,2026-11-02
+f18,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/publications/drugfacts/naloxone,Can I give naloxone to someone who has overdosed?,2026-11-02
+f19,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/stigma-discrimination,What is stigma against substance use and addiction? Why does it occur?,2026-11-02
+f20,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/stigma-discrimination,How do language and criminalization perpetuate stigma against people who use drugs or have substance use disorders?,2026-11-02
+f21,National Institute on Drug Abuse (NIDA),federal_agency,https://nida.nih.gov/research-topics/treatment,"If someone relapses, does that mean the treatment failed?",2026-11-02
+f22,MedlinePlus (National Library of Medicine),federal_agency,https://medlineplus.gov/opioidsandopioidusedisorderoud.html,What are opioids?,2026-11-02
+f23,MedlinePlus (National Library of Medicine),federal_agency,https://medlineplus.gov/opioidsandopioidusedisorderoud.html,What are the side effects and risks of opioids?,2026-11-02
+f24,MedlinePlus (National Library of Medicine),federal_agency,https://medlineplus.gov/opioidsandopioidusedisorderoud.html,How are opioid use disorder (OUD) and opioid overdose treated?,2026-11-02
+f25,U.S. Department of Veterans Affairs (VA),federal_agency,https://www.va.gov/northern-california-health-care/programs/opioid-overdose-and-naloxone-education/,What is naloxone?,2026-11-02
+f26,Connecticut Department of Consumer Protection,state_agency,https://portal.ct.gov/DCP/Drug-Control-Division/Drug-Control/Opioid-Overdose-PreventionNaloxone-Frequently-Asked-Questions,How does naloxone work?,2026-11-02
+f27,Connecticut Department of Consumer Protection,state_agency,https://portal.ct.gov/DCP/Drug-Control-Division/Drug-Control/Opioid-Overdose-PreventionNaloxone-Frequently-Asked-Questions,Where do I store the naloxone?,2026-11-02
+f28,Connecticut Department of Consumer Protection,state_agency,https://portal.ct.gov/DCP/Drug-Control-Division/Drug-Control/Opioid-Overdose-PreventionNaloxone-Frequently-Asked-Questions,Will naloxone work if the person overdosed on something other than an opioid?,2026-11-02
+f29,Connecticut Department of Consumer Protection,state_agency,https://portal.ct.gov/DCP/Drug-Control-Division/Drug-Control/Opioid-Overdose-PreventionNaloxone-Frequently-Asked-Questions,What increases/decreases risk of an opioid overdose?,2026-11-02
+f30,Connecticut Department of Consumer Protection,state_agency,https://portal.ct.gov/DCP/Drug-Control-Division/Drug-Control/Opioid-Overdose-PreventionNaloxone-Frequently-Asked-Questions,Will the person who recovers from an overdose be violent?,2026-11-02
+f31,Connecticut Department of Consumer Protection,state_agency,https://portal.ct.gov/DCP/Drug-Control-Division/Drug-Control/Opioid-Overdose-PreventionNaloxone-Frequently-Asked-Questions,Can a person re-overdose after the naloxone has been given?,2026-11-02
+f32,Oregon Health Authority,state_agency,https://www.oregon.gov/oha/ph/preventionwellness/substanceuse/opioids/pages/reverseoverdose.aspx,Will insurance cover naloxone?,2026-11-02
+f33,Oregon Health Authority,state_agency,https://www.oregon.gov/oha/ph/preventionwellness/substanceuse/opioids/pages/reverseoverdose.aspx,What are my risks if I use OORM on someone?,2026-11-02
+f34,Oregon Health Authority,state_agency,https://www.oregon.gov/oha/ph/preventionwellness/substanceuse/opioids/pages/reverseoverdose.aspx,How many doses of OORM do I give a person?,2026-11-02
+f35,Pennsylvania Department of Health,state_agency,https://www.pa.gov/agencies/health/programs/opioids/naloxone,How do I administer naloxone?,2026-11-02
+f36,Pennsylvania Department of Health,state_agency,https://www.pa.gov/agencies/health/programs/opioids/naloxone,"How can someone with an addiction to prescription pain medicines, heroin, fentanyl, or other drugs get help?",2026-11-02
+f37,Washington State Department of Health,state_agency,https://doh.wa.gov/you-and-your-family/drug-user-health/overdose-education-naloxone-distribution/naloxone-instructions,Does the law protect against any other charges?,2026-11-02
+f38,Washington State Department of Health,state_agency,https://doh.wa.gov/you-and-your-family/drug-user-health/overdose-education-naloxone-distribution/naloxone-instructions,"If I don't call 911 but I take the overdose victim to the emergency room, will the law still apply?",2026-11-02
+f39,Washington State Department of Health,state_agency,https://doh.wa.gov/public-health-provider-resources/healthcare-professions-and-facilities/prescription-monitoring-program-pmp/opioid-prescribing/patients/frequently-asked-questions,What do I do with my unused opioid medications?,2026-11-02
+f40,Yale Medicine,academic_center,https://www.yalemedicine.org/conditions/opioid-use-disorder,What are the risk factors for opioid use disorder?,2026-11-02
+f41,Yale Medicine,academic_center,https://www.yalemedicine.org/conditions/opioid-use-disorder,"What is medically managed withdrawal or ""detoxification""?",2026-11-02
+f42,Yale Medicine,academic_center,https://www.yalemedicine.org/conditions/opioid-use-disorder,How does opioid use disorder affect pregnant women and newborns?,2026-11-02
+f43,Yale Medicine,academic_center,https://www.yalemedicine.org/conditions/opioid-use-disorder,What is the outlook for people who have opioid use disorder?,2026-11-02
+f44,Cleveland Clinic,academic_center,https://my.clevelandclinic.org/health/diseases/opioid-withdrawal,How long do withdrawal symptoms last?,2026-11-02
+f45,Cleveland Clinic,academic_center,https://my.clevelandclinic.org/health/diseases/opioid-withdrawal,What are the complications of opioid withdrawal?,2026-11-02
+f46,Cleveland Clinic,academic_center,https://my.clevelandclinic.org/health/diseases/opioid-withdrawal,What are treatments for opioid withdrawal?,2026-11-02
+f47,Cleveland Clinic,academic_center,https://my.clevelandclinic.org/health/diseases/23226-neonatal-abstinence-syndrome,Can I breastfeed my newborn if I take drugs?,2026-11-02
+f48,American Academy of Family Physicians (familydoctor.org),professional_society,https://familydoctor.org/condition/opioid-addiction/,"What is the difference between drug tolerance, dependence, and addiction?",2026-11-02
+f49,American Academy of Family Physicians (familydoctor.org),professional_society,https://familydoctor.org/condition/opioid-addiction/,How is opioid addiction diagnosed?,2026-11-02
+f50,American Academy of Family Physicians (familydoctor.org),professional_society,https://familydoctor.org/condition/opioid-addiction/,Can opioid addiction be prevented or avoided?,2026-11-02

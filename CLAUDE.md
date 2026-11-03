@@ -61,7 +61,17 @@ GEMINI_API_KEY=...      # free tier, only ~20 requests/day per model
       rule (decisions #13).
   - **Over-caution:** 0/180.
   - **Study 2A:** pipeline check only.
-  - **Spend:** $9.27 of $18.
+  - **Hard-message round (30 msgs, 2026-11-03):**
+    - Breaks the ceiling: default empathy 4.15 → 3.57.
+    - The MI prompt's advantage grows: empathy +0.57, autonomy +0.53.
+    - Over-caution still 0/90.
+  - **Replications** (`replications/`):
+    - **HRIPBench** (direct): Claude at the level of the paper's best models (87% safety accuracy); its errors
+      lean strongly cautious.
+    - **Wang 2025:** stigma 21% native → 0.6% with an engineered prompt (Wang: 35% → 6%), driven by "alcoholic
+      hepatitis".
+    - **Campos 2025:** Claude is 3× longer than official FAQs; reading level depends on how bullets are scored.
+  - **Spend:** $30.75 of $32 (budget raised by Shubham).
   - **Pending (Shubham):**
     - review and edit the messages, then re-run;
     - hand-score `eval/hand_scoring_sheet.csv`, then run `python eval/compute_agreement.py`;

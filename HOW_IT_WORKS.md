@@ -134,6 +134,20 @@ and over-caution. Full results are in `results/RESULTS.md`; every deviation from
 own templates, not a finding. Real data needs Erowid's permission. There is a dual-use risk, so nothing that
 profiles people gets built.
 
+## Harder messages and replications
+- **Study 1b (`eval/tone_messages_hard.csv`, `eval/hard_analysis.py`):**
+  - 30 tougher messages: hostile, not stopping, self-labeling, dosing, emergencies, family ultimatums.
+  - Same pipeline as the main study. Used to get past the ceiling effect.
+- **`replications/`:** re-runs three published studies on Claude, so our numbers can be compared with the
+  literature:
+  - **HRIPBench:** direct copy (public data, verbatim prompts).
+  - **Wang 2025** and **Campos 2025:** design and analysis copied, inputs rebuilt because the originals aren't
+    public.
+  - Each folder's README says exactly what was copied and what wasn't.
+- **Why replicate:** a new result means more when the same methods give the published result on the published
+  setup. Where they don't, the difference is itself a finding (e.g. readability depends on how bullet points are
+  scored).
+
 ## Limitations to be upfront about
 - Tone study: AI-written messages; the judge is the same vendor as the model; rubric, RAG corpus and MI prompt
   share sources (circularity); one reply per message. See `results/RESULTS.md`.

@@ -10,3 +10,6 @@ rubric_sources/*
 !rubric_sources/README.md
 results/api_usage.csv
 API.txt
+results/api_usage.lock
+replications/hripbench/data/
+replications/campos2025/faqs.csv

@@ -173,8 +173,9 @@ def text_of(msg) -> str:
 def _ask_claude(system, user, model, phase="", cache_system=False, effort=None, max_tokens=4000):
     sys_param = ([{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
                  if cache_system else system)
-    params = dict(model=model, max_tokens=max_tokens, system=sys_param,
-                  messages=[{"role": "user", "content": user}])
+    params = dict(model=model, max_tokens=max_tokens, messages=[{"role": "user", "content": user}])
+    if system:  # empty system = no system prompt at all (e.g. Wang 2025's "native" condition)
+        params["system"] = sys_param
     if effort:
         params["output_config"] = {"effort": effort}
     msg = claude_create(phase=phase, **params)

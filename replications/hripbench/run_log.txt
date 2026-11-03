@@ -1,0 +1,53 @@
+3115 calls to make (rough projection $8.91); spent so far $9.92
+  100/3115  spent $9.94
+  200/3115  spent $9.97
+  300/3115  spent $9.99
+  400/3115  spent $10.02
+  500/3115  spent $10.05
+Traceback (most recent call last):
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\src\costs.py", line 31, in _file_lock
+    fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileExistsError: [Errno 17] File exists: 'C:\\Users\\super\\Desktop\\Other Research\\AI and Addicition Model Test\\results\\api_usage.lock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\replications\hripbench\run.py", line 260, in <module>
+    main()
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\replications\hripbench\run.py", line 249, in main
+    run(df, a.models, a.workers, a.effort)
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\replications\hripbench\run.py", line 124, in run
+    fu.result()
+  File "C:\Users\super\AppData\Local\Programs\Python\Python312-arm64\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\super\AppData\Local\Programs\Python\Python312-arm64\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\super\AppData\Local\Programs\Python\Python312-arm64\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\replications\hripbench\run.py", line 114, in one
+    text = ask(PROMPT[r.task], r.question, m, phase=f"hripbench:{m}", effort=effort, max_tokens=2000)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\src\llm.py", line 143, in ask
+    return _ask_claude(system, user, model, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\src\llm.py", line 181, in _ask_claude
+    msg = claude_create(phase=phase, **params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\src\llm.py", line 163, in claude_create
+    costs.log(params["model"], msg.usage, phase)
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\src\costs.py", line 99, in log
+    with _file_lock():  # threads and separate scripts may write at the same moment
+         ^^^^^^^^^^^^
+  File "C:\Users\super\AppData\Local\Programs\Python\Python312-arm64\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\super\Desktop\Other Research\AI and Addicition Model Test\src\costs.py", line 34, in _file_lock
+    if time.time() - lock.stat().st_mtime > 30:  # stale lock from a killed process
+                     ^^^^^^^^^^^
+  File "C:\Users\super\AppData\Local\Programs\Python\Python312-arm64\Lib\pathlib.py", line 840, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\super\\Desktop\\Other Research\\AI and Addicition Model Test\\results\\api_usage.lock'

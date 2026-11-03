@@ -1,0 +1,51 @@
+150 replies to generate (projection $1.30); spent $14.31
+  25/150 spent $15.58
+  50/150 spent $16.60
+  75/150 spent $17.21
+  100/150 spent $17.77
+  125/150 spent $18.45
+  150/150 spent $19.05
+                  arm              measure  n_pairs  claude_mean  faq_mean    diff  diff_lo  diff_hi     test     p  campos_chatgpt_diff
+    claude-sonnet-5-5                words       50      339.460   117.060 222.400  198.758  246.680 paired t 0.000               177.10
+    claude-sonnet-5-5            sentences       50       30.320     6.200  24.120   21.780   26.520 paired t 0.000                 9.20
+    claude-sonnet-5-5      lexical_density       50       58.269    52.391   5.878    4.008    7.758 paired t 0.000                 6.50
+    claude-sonnet-5-5       chars_per_word       50        5.416     5.037   0.379    0.226    0.530 paired t 0.000                 0.55
+    claude-sonnet-5-5   syllables_per_word       50        1.759     1.629   0.130    0.082    0.180 paired t 0.000                 0.19
+    claude-sonnet-5-5   words_per_sentence       50       11.582    19.718  -8.136   -9.832   -6.472 Wilcoxon 0.000                  NaN
+    claude-sonnet-5-5         coleman_liau       50       12.872    11.897   0.975    0.129    1.831 paired t 0.030                 3.43
+    claude-sonnet-5-5          gunning_fog       50       12.417    13.904  -1.487   -2.449   -0.541 paired t 0.005                 3.47
+    claude-sonnet-5-5                 smog       50       11.742    13.066  -1.324   -1.997   -0.616 Wilcoxon 0.000                 2.96
+    claude-sonnet-5-5       flesch_kincaid       50        9.565    11.348  -1.784   -2.582   -0.979 paired t 0.000                 3.61
+    claude-sonnet-5-5                  ari       50       11.148    12.878  -1.730   -2.698   -0.752 paired t 0.002                 4.33
+    claude-sonnet-5-5  flesch_reading_ease       50       47.273    48.751  -1.479   -5.657    2.781 paired t 0.507               -20.40
+    claude-sonnet-5-5         stigma_terms       50        0.160     0.020   0.140    0.000    0.320 Wilcoxon 0.084                 0.70
+    claude-sonnet-5-5 pct_sentences_stigma       50        0.284     0.286  -0.002   -0.708    0.494 Wilcoxon 0.345                 3.57
+     claude-haiku-5-5                words       50      312.200   117.060 195.140  167.800  226.325 Wilcoxon 0.000               177.10
+     claude-haiku-5-5            sentences       50       22.260     6.200  16.060   13.760   18.580 Wilcoxon 0.000                 9.20
+     claude-haiku-5-5      lexical_density       50       56.875    52.391   4.484    2.847    6.143 paired t 0.000                 6.50
+     claude-haiku-5-5       chars_per_word       50        5.334     5.037   0.297    0.160    0.434 paired t 0.000                 0.55
+     claude-haiku-5-5   syllables_per_word       50        1.737     1.629   0.109    0.060    0.158 paired t 0.000                 0.19
+     claude-haiku-5-5   words_per_sentence       50       14.466    19.718  -5.253   -7.054   -3.578 Wilcoxon 0.000                  NaN
+     claude-haiku-5-5         coleman_liau       50       12.886    11.897   0.989    0.185    1.781 paired t 0.023                 3.43
+     claude-haiku-5-5          gunning_fog       50       13.297    13.904  -0.607   -1.666    0.418 paired t 0.281                 3.47
+     claude-haiku-5-5                 smog       50       12.594    13.066  -0.471   -1.251    0.321 paired t 0.270                 2.96
+     claude-haiku-5-5       flesch_kincaid       50       10.462    11.348  -0.887   -1.820    0.003 paired t 0.078                 3.61
+     claude-haiku-5-5                  ari       50       11.965    12.878  -0.913   -1.983    0.131 paired t 0.114                 4.33
+     claude-haiku-5-5  flesch_reading_ease       50       45.976    48.751  -2.775   -7.419    1.772 paired t 0.256               -20.40
+     claude-haiku-5-5         stigma_terms       50        0.160     0.020   0.140   -0.020    0.420 Wilcoxon 0.257                 0.70
+     claude-haiku-5-5 pct_sentences_stigma       50        0.270     0.286  -0.015   -0.770    0.570 Wilcoxon 0.715                 3.57
+sonnet_plain_language                words       50      192.300   117.060  75.240   57.299   92.480 paired t 0.000               177.10
+sonnet_plain_language            sentences       50       22.060     6.200  15.860   14.260   17.560 paired t 0.000                 9.20
+sonnet_plain_language      lexical_density       50       49.247    52.391  -3.145   -4.637   -1.742 paired t 0.000                 6.50
+sonnet_plain_language       chars_per_word       50        4.481     5.037  -0.556   -0.671   -0.442 paired t 0.000                 0.55
+sonnet_plain_language   syllables_per_word       50        1.423     1.629  -0.205   -0.243   -0.170 paired t 0.000                 0.19
+sonnet_plain_language   words_per_sentence       50        8.918    19.718 -10.800  -12.420   -9.236 Wilcoxon 0.000                  NaN
+sonnet_plain_language         coleman_liau       50        6.754    11.897  -5.143   -5.815   -4.505 paired t 0.000                 3.43
+sonnet_plain_language          gunning_fog       50        6.633    13.904  -7.271   -8.182   -6.410 paired t 0.000                 3.47
+sonnet_plain_language                 smog       50        8.105    13.066  -4.961   -5.659   -4.269 Wilcoxon 0.000                 2.96
+sonnet_plain_language       flesch_kincaid       50        4.531    11.348  -6.818   -7.614   -6.074 Wilcoxon 0.000                 3.61
+sonnet_plain_language                  ari       50        5.200    12.878  -7.678   -8.622   -6.755 Wilcoxon 0.000                 4.33
+sonnet_plain_language  flesch_reading_ease       50       78.645    48.751  29.893   26.394   33.357 paired t 0.000               -20.40
+sonnet_plain_language         stigma_terms       50        0.060     0.020   0.040   -0.040    0.120 Wilcoxon 0.317                 0.70
+sonnet_plain_language pct_sentences_stigma       50        0.212     0.286  -0.073   -0.790    0.425 Wilcoxon 0.715                 3.57
+Spent so far $19.15

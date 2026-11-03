@@ -1,0 +1,48 @@
+286 replies to generate (projection $4.90); spent $9.92
+  25/286 spent $9.97
+  50/286 spent $10.03
+  75/286 spent $10.25
+  100/286 spent $10.60
+  125/286 spent $11.03
+  150/286 spent $12.22
+  175/286 spent $13.50
+  200/286 spent $15.12
+  225/286 spent $16.97
+  250/286 spent $19.51
+  275/286 spent $22.21
+ condition             model   n  pct_sl  terms   words      pct_ci
+engineered  claude-haiku-5-5  60   0.000      0 447.950   0.0%-6.0%
+engineered   claude-opus-5-5  60   0.017      1 749.950   0.3%-8.9%
+engineered claude-sonnet-5-5  60   0.000      0 546.883   0.0%-6.0%
+    native  claude-haiku-5-5  60   0.233     19 376.883 14.4%-35.4%
+    native   claude-opus-5-5  60   0.283     21 476.917 18.5%-40.8%
+    native claude-sonnet-5-5  60   0.217     18 391.767 13.1%-33.6%
+engineered        ALL CLAUDE 180   0.006      1 581.594   0.1%-3.1%
+    native        ALL CLAUDE 180   0.244     58 415.189 18.7%-31.2%
+{
+ "n": 360,
+ "events": 45,
+ "wang_native_pct": 35.4,
+ "wang_engineered_pct": 6.3,
+ "ours_native_pct": 24.4,
+ "ours_engineered_pct": 0.6,
+ "words_vs_sl_pointbiserial": [
+  -0.1371341035166329,
+  0.009181886010242637
+ ],
+ "adjusted_OR": {
+  "topic_ALD": 9.386,
+  "topic_SUD": 0.538,
+  "engineered": 0.011,
+  "words_per100": 1.023
+ },
+ "mcnemar_native_only": 44,
+ "mcnemar_engineered_only": 1,
+ "mcnemar_p": 2.6147972675971687e-12,
+ "native_topic_rates": {
+  "ALD": 0.55,
+  "AUD": 0.117,
+  "SUD": 0.067
+ }
+}
+Spent so far $23.39

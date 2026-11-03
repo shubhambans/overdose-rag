@@ -91,9 +91,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int)
     ap.add_argument("--conditions", default=",".join(CONDITIONS))
+    ap.add_argument("--messages", default=str(MESSAGES), help="message CSV (e.g. eval/tone_messages_hard.csv)")
     args = ap.parse_args()
 
-    rows = list(csv.DictReader(MESSAGES.open(encoding="utf-8")))[: args.limit]
+    rows = list(csv.DictReader(open(args.messages, encoding="utf-8")))[: args.limit]
     conds = args.conditions.split(",")
     cache = load_cache()
     todo = len(rows) * len(conds)

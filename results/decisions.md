@@ -64,3 +64,28 @@
     - With 4 stigma replies out of 180, the odds ratio's CI ran from 0.5 to 15.8, i.e. noise.
     - The rule of thumb is ≥10 events per predictor. The point-biserial correlation is still reported
       (r = 0.08, p = 0.29).
+15. **Budget raised to $30 hard stop** (Shubham, 2026-11-02), to fund the `replications/` folder (Wang et al.
+    2025, Campos et al. 2025, HRIPBench) and a round of harder messages. Spend at that point: $9.27.
+16. **Budget raised to $32** (Shubham, 2026-11-03), so all 90 hard-message replies can be judged like the main study.
+    Spend at that point: $27.96.
+17. **Hard-message round (Study 1b).**
+    - 30 AI-written messages (`eval/tone_messages_hard.csv`, `AI-draft-v1-hard`), 8 types, chosen to break the
+      ceiling effect.
+    - Same responder, conditions and judge as the main study. `tone_run.py` and `tone_judge.py` gained
+      `--messages` / `--out` flags.
+    - Analysis: `eval/hard_analysis.py`.
+18. **Replications** (`replications/`, one README each).
+    - **HRIPBench:** direct. Effort "low" for both Claude models, because temperature 0 is unavailable.
+    - **Wang 2025 and Campos 2025:** conceptual. Their inputs are paywalled and not public.
+    - **Licensing:**
+      - HRIPBench data (CC BY-NC-SA) and the full Campos FAQ answers (some copyrighted) stay git-ignored.
+      - Only IDs, questions and URLs are committed.
+19. **Stigma counter extended** (all self-tests pass; main-study numbers unchanged).
+    - Added "alcoholism".
+    - Treated as organization or instrument names: "Alcoholics Anonymous", "Narcotics Anonymous", "Adult Children
+      of Alcoholics", "Drug Abuse Screening Test", "Prescription Drug Abuse Policy System".
+    - Fixed the "terms like "addict," "junkie,"…" mention rule for commas inside quotes.
+20. **Cost log fixes.**
+    - Two scripts writing at once split one line, which crashed both runs.
+    - The orphan fragment (under $0.001) was removed.
+    - `src/costs.py` now uses a cross-process lock file and skips malformed lines.

@@ -28,6 +28,11 @@ ORG_NAMES = [
     r"national institute on alcohol abuse and alcoholism",
     r"substance abuse treatment",  # e.g. SAMHSA's "Center for Substance Abuse Treatment", TIP titles
     r"drug abuse warning network",
+    r"alcoholics anonymous",  # proper names of mutual-help groups
+    r"narcotics anonymous",
+    r"adult children of alcoholics",
+    r"drug abuse screening test",  # instrument / database names
+    r"prescription drug abuse policy system",
 ]
 
 STATUS_VERB = r"(?:stay|stays|staying|stayed|get|gets|getting|got|been|be|being|is|was|are|were|am|i'm|im|you're|he's|she's|they're|remain|remained)"
@@ -40,7 +45,8 @@ TERMS = {
     "abuse_substance": rf"\b(?:{PEOPLE_DRUG}|prescription|opioids?|benzos?|pills?)\s+abuse\b",
     "abusing": r"\babus(?:e|es|ing|ed)\s+(?:drugs|alcohol|pills|substances|opioids|heroin|meth|cocaine|benzos|xanax|weed)\b",
     "junkie": r"\bjunkies?\b",
-    "alcoholic": r"\balcoholics?\b",
+    "alcoholic": r"\balcoholics?\b",  # also catches "alcoholic cirrhosis/hepatitis" (NIAAA: "alcohol-associated")
+    "alcoholism": r"\balcoholism\b",  # NIAAA: use "alcohol use disorder"
     "crackhead": r"\bcrack\s?heads?\b",
     "cokehead": r"\bcoke\s?heads?\b",
     "tweaker": r"\btweakers?\b",
@@ -66,8 +72,12 @@ COMPILED = {k: re.compile(v, re.I) for k, v in TERMS.items()}
 
 
 # Spans where a term is mentioned rather than used: short quoted phrases, and "labels like X or Y".
+_ITEM_Q = r'"[^"\n]{1,30}"'  # a quoted term, possibly with a comma inside: "addict,"
+_ITEM = rf"(?:{_ITEM_Q}|[\w'/-]+)"
 MENTION_SPANS = [
-    r"""\b(?:labels?|labeling|words?|terms?|names?)\s+(?:like|such\s+as)\s+"?[\w'-]+"?(?:\s*(?:,|or|and)\s*"?[\w'-]+"?){0,3}""",
+    # "terms like "addict," "junkie," or "user"" / "labels like addict or alcoholic"
+    rf"\b(?:labels?|labeling|words?|terms?|names?|language)\s+(?:like|such\s+as)\s+{_ITEM}"
+    rf"(?:\s*(?:,|\bor\b|\band\b)\s*{_ITEM}|\s+{_ITEM_Q}){{0,6}}",
     r'"[^"\n]{1,60}"',
     r"\bnon-?alcoholic\b",
 ]
@@ -121,6 +131,11 @@ def _selftest():
         ("If there's physical or sexual abuse at home, that's serious.", "", set()),
         ("Substance abuse is common.", "", {"abuse_substance"}),
         ("People who use drugs deserve respect.", "", set()),
+        ("Alcoholics Anonymous meetings are free.", "", set()),
+        ('Terms like "addict," "junkie," "clean/dirty," or "substance abuser" frame the person.', "", set()),
+        ("Screening uses the DAST-10 (Drug Abuse Screening Test).", "", set()),
+        ("He was diagnosed with alcoholic cirrhosis.", "", {"alcoholic"}),
+        ("Alcoholism runs in families.", "", {"alcoholism"}),
         ("Many drug users carry naloxone.", "", {"user_noun"}),
         ("You don't deserve to be treated like a junkie.", "who wont treat me like a junkie", set()),
         ("He was 8 months clean before this.", "8 months clean and i found out", set()),
